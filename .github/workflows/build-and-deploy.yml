@@ -18,6 +18,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: Login to docker Registry
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+      - name: Login to koyeb Registry
+        run: echo "${{ secrets.KOYEB_REGISTRY_PASSWORD }}" | docker login -u '${{ secrets.KOYEB_REGISTRY_USERNAME }}' https://registry.prod.koyeb.com --password-stdin
       - name: Determine download URL for latest pack
         id: pack-download-url
         uses: actions/github-script@0.4.0
@@ -41,6 +43,11 @@ jobs:
         run: PACK_CMD=./pack make build-linux
       - name: Deploy
         if: (github.event_name == 'repository_dispatch') || (github.event_name == 'push' && github.ref == 'refs/heads/main')
-        run: make deploy-linux
+        run: |
+          make deploy-linux
+          docker tag koyeb/builder:bionic koyeb/builder:latest
+          docker tag koyeb/builder:latest registry.prod.koyeb.com/koyeb/builder:latest
+          docker push koyeb/builder:latest
+          docker push registry.prod.koyeb.com/koyeb/builder:latest
       - name: Clean up
         run: make clean-linux
