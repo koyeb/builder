@@ -40,12 +40,12 @@ jobs:
           curl -s -L -o pack.tgz ${{ steps.pack-download-url.outputs.result }}
           tar -xvf pack.tgz
       - name: Build
-        run: PACK_CMD=./pack make build-linux
+        run: |
+          PACK_CMD=./pack make build-paketo
+          PACK_CMD=./pack make build-heroku
       - name: Deploy
         if: (github.event_name == 'repository_dispatch') || (github.event_name == 'push' && github.ref == 'refs/heads/main')
         run: |
-          make build-heroku
-          make build-paketo
           docker tag koyeb/builder:heroku-18 koyeb/builder:latest
           docker tag koyeb/builder:heroku-18 registry.prod.koyeb.com/koyeb/builder:latest
           docker tag koyeb/builder:heroku-18 registry.prod.koyeb.com/koyeb/builder:heroku-18
