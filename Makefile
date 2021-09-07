@@ -16,7 +16,7 @@ build-heroku-18: build-root
 
 build-heroku-20: build-root
 	@echo "> Building 'heroku-20' builder..."
-	$(PACK_CMD) builder create koyeb/builder:heroku-20 --config $(SAMPLES_ROOT)/builders/heroku/18/builder.toml $(PACK_FLAGS)
+	$(PACK_CMD) builder create koyeb/builder:heroku-20 --config $(SAMPLES_ROOT)/builders/heroku/20/builder.toml $(PACK_FLAGS)
 
 build-paketo: build-paketo-18
 

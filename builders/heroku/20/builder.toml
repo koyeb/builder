@@ -1,0 +1,119 @@
+description = "Base builder for Heroku-18 stack, based on ubuntu:18.04 base image"
+
+[stack]
+id = "heroku-18"
+build-image = "heroku/pack:18-build"
+run-image = "heroku/pack:18"
+
+[lifecycle]
+version = "0.11.4"
+
+[[buildpacks]]
+  id = "heroku/java"
+  uri = "docker://public.ecr.aws/heroku-buildpacks/heroku-java-buildpack@sha256:1483c15d79e460d8e682f9e1f765a04cca130e43e65ade4390d67fc944c4358a"
+
+[[buildpacks]]
+  id = "heroku/scala"
+  uri = "docker://public.ecr.aws/heroku-buildpacks/heroku-scala-buildpack@sha256:39ad34bcc1766cdff4f2a4d5e88931a2f2678f5605bd56f1b6fc551f40fba70f"
+
+[[buildpacks]]
+  id = "heroku/java-function"
+  uri = "docker://public.ecr.aws/heroku-buildpacks/heroku-java-function-buildpack@sha256:cb0509796286c89ea3c078c36af66ca7e73949dd133a06544c7c7adb2da5d7fc"
+
+[[buildpacks]]
+  id = "heroku/ruby"
+  uri = "https://github.com/heroku/heroku-buildpack-ruby/releases/download/v222/heroku-buildpack-ruby-v222.tgz"
+
+[[buildpacks]]
+  id = "heroku/procfile"
+  uri = "docker://docker.io/heroku/procfile-cnb:0.6.2"
+
+[[buildpacks]]
+  id = "heroku/python"
+  uri = "https://cnb-shim.herokuapp.com/v1/heroku/python?version=0.3.1&name=Python"
+
+[[buildpacks]]
+  id = "heroku/php"
+  uri = "https://cnb-shim.herokuapp.com/v1/heroku/php?version=0.3.1&name=PHP"
+
+[[buildpacks]]
+  id = "heroku/go"
+  uri = "https://cnb-shim.herokuapp.com/v1/heroku/go?version=0.3.1&name=Go"
+
+[[buildpacks]]
+  id = "heroku/nodejs"
+  uri = "docker://public.ecr.aws/heroku-buildpacks/heroku-nodejs-buildpack@sha256:b43e71d5338657097582cd48ba27fb0970ace81e08ac25dcf9bbd2659b9f8b14"
+
+[[buildpacks]]
+  id = "heroku/nodejs-function"
+  uri = "docker://public.ecr.aws/heroku-buildpacks/heroku-nodejs-function-buildpack@sha256:ba460ab0cb2f0147c09f22680761e7a6b24607f97dfd8b82bb7cffe1bf82ff58"
+
+[[order]]
+  [[order.group]]
+    id = "heroku/ruby"
+    version = "0.0.1"
+
+  [[order.group]]
+    id = "heroku/procfile"
+    version = "0.6.2"
+    optional = true
+
+[[order]]
+  [[order.group]]
+    id = "heroku/python"
+    version = "0.3.1"
+
+  [[order.group]]
+    id = "heroku/procfile"
+    version = "0.6.2"
+    optional = true
+
+[[order]]
+  [[order.group]]
+    id = "heroku/scala"
+    version = "0.0.90"
+
+  [[order.group]]
+    id = "heroku/procfile"
+    version = "0.6.2"
+    optional = true
+
+[[order]]
+  [[order.group]]
+    id = "heroku/php"
+    version = "0.3.1"
+
+  [[order.group]]
+    id = "heroku/procfile"
+    version = "0.6.2"
+    optional = true
+
+[[order]]
+  [[order.group]]
+    id = "heroku/go"
+    version = "0.3.1"
+
+  [[order.group]]
+    id = "heroku/procfile"
+    version = "0.6.2"
+    optional = true
+
+[[order]]
+  [[order.group]]
+    id = "heroku/nodejs-function"
+    version = "0.6.0"
+
+[[order]]
+  [[order.group]]
+    id = "heroku/java-function"
+    version = "0.3.17"
+
+[[order]]
+  [[order.group]]
+    id = "heroku/nodejs"
+    version = "0.3.6"
+
+[[order]]
+  [[order.group]]
+    id = "heroku/java"
+    version = "0.3.10"

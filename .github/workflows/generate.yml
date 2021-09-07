@@ -9,7 +9,6 @@ jobs:
   generate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
       - name: Checkout heroku buildpacks
         uses: actions/checkout@v2
         with:
@@ -20,6 +19,7 @@ jobs:
         with:
           repository: paketo-buildpacks/full-builder
           path: .source/paketo
+      - uses: actions/checkout@v2
       - name: copy
         run: |
           cp .source/heroku/builder-18.toml builders/heroku/18/builder.toml
