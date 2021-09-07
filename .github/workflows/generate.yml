@@ -19,9 +19,10 @@ jobs:
         with:
           repository: paketo-buildpacks/full-builder
           path: .source/paketo
-      - uses: actions/checkout@v2
       - name: copy
         run: |
+          find .source
+
           cp .source/heroku/builder-18.toml builders/heroku/18/builder.toml
           cp .source/heroku/builder-20.toml builders/heroku/20/builder.toml
           cp .source/paketo/builder.toml builders/paketo/18/builder.toml
