@@ -44,10 +44,19 @@ jobs:
       - name: Deploy
         if: (github.event_name == 'repository_dispatch') || (github.event_name == 'push' && github.ref == 'refs/heads/main')
         run: |
-          make deploy-linux
-          docker tag koyeb/builder:bionic koyeb/builder:latest
-          docker tag koyeb/builder:latest registry.prod.koyeb.com/koyeb/builder:latest
-          docker push koyeb/builder:latest
-          docker push registry.prod.koyeb.com/koyeb/builder:latest
+          make build-heroku
+          make build-paketo
+          docker tag koyeb/builder:heroku-18 koyeb/builder:latest
+          docker tag koyeb/builder:heroku-18 registry.prod.koyeb.com/koyeb/builder:latest
+          docker tag koyeb/builder:heroku-18 registry.prod.koyeb.com/koyeb/builder:heroku-18
+          docker tag koyeb/builder:heroku-18 registry.prod.koyeb.com/koyeb/builder:heroku
+          docker tag koyeb/builder:heroku-20 registry.prod.koyeb.com/koyeb/builder:heroku-20
+          docker tag koyeb/builder:paketo-18 registry.prod.koyeb.com/koyeb/builder:paketo-18
+          docker tag koyeb/builder:paketo-18 registry.prod.koyeb.com/koyeb/builder:paketo
+
+          for tag in latest heroku heroku-18 heroku-20 paketo paketo-18; do
+            docker push koyeb/builder:$tag
+            docker push registry.prod.koyeb.com/koyeb/builder:$tag
+          done
       - name: Clean up
         run: make clean-linux

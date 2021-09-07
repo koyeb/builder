@@ -8,25 +8,25 @@ clean: clean-linux
 ## Linux
 ####################
 
-build-linux: build-linux-builders
+build-heroku: build-heroku-18 build-heroku-20
 
-build-bionic: build-builder-bionic
+build-heroku-18: build-root
+	@echo "> Building 'heroku-18' builder..."
+	$(PACK_CMD) builder create koyeb/builder:heroku-18 --config $(SAMPLES_ROOT)/builders/heroku/18/builder.toml $(PACK_FLAGS)
 
-build-linux-builders: build-builder-bionic
+build-heroku-20: build-root
+	@echo "> Building 'heroku-20' builder..."
+	$(PACK_CMD) builder create koyeb/builder:heroku-20 --config $(SAMPLES_ROOT)/builders/heroku/18/builder.toml $(PACK_FLAGS)
 
-build-builder-bionic: build-root
-	@echo "> Building 'bionic' builder..."
-	$(PACK_CMD) builder create koyeb/builder:bionic --config $(SAMPLES_ROOT)/builders/bionic/builder.toml $(PACK_FLAGS)
+build-paketo: build-paketo-18
 
-deploy-linux: deploy-linux-builders
-
-deploy-linux-builders:
-	@echo "> Deploying 'bionic' builder..."
-	docker push koyeb/builder:bionic
+build-paketo-18: build-root
+	@echo "> Building 'paketo-18' builder..."
+	$(PACK_CMD) builder create koyeb/builder:paketo-18 --config $(SAMPLES_ROOT)/builders/paketo/18/builder.toml $(PACK_FLAGS)
 
 clean-linux:
 	@echo "> Removing builders..."
-	docker rmi koyeb/builder:bionic || true
+	docker rmi koyeb/builder:paketo-18 || true
 
 	@echo "> Removing '.tmp'"
 	rm -rf .tmp
