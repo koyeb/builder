@@ -1,9 +1,9 @@
-description = "Base builder for Heroku-18 stack, based on ubuntu:18.04 base image"
+description = "Base builder for Heroku-20 stack, based on ubuntu:20.04 base image"
 
 [stack]
-id = "heroku-18"
-build-image = "heroku/pack:18-build"
-run-image = "heroku/pack:18"
+id = "heroku-20"
+build-image = "heroku/pack:20-build"
+run-image = "heroku/pack:20"
 
 [lifecycle]
 version = "0.11.4"
