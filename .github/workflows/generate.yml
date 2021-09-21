@@ -14,7 +14,7 @@ jobs:
       - name: install yj
         run: |
           echo "Installing yj to /usr/local/bin"
-          wget https://github.com/sourcegraph/yj/releases/download/v5.0.0/yj-linux -O /usr/local/bin/yj
+          wget https://github.com/sclevine/yj/releases/download/v5.0.0/yj-linux -O /usr/local/bin/yj
           chmod a+x /usr/local/bin/yj
       - name: Checkout heroku buildpacks
         uses: actions/checkout@v2
