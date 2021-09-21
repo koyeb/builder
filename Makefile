@@ -8,6 +8,11 @@ clean: clean-linux
 ## Linux
 ####################
 
+patch:
+	./patch.sh $(SAMPLES_ROOT)/builders/heroku/18/builder.toml
+	./patch.sh $(SAMPLES_ROOT)/builders/heroku/20/builder.toml
+	./patch.sh $(SAMPLES_ROOT)/builders/paketo/18/builder.toml
+
 build-heroku: build-heroku-18 build-heroku-20
 
 build-heroku-18: build-root

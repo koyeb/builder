@@ -11,6 +11,11 @@ jobs:
     steps:
       - name: Clone
         uses: actions/checkout@v2
+      - name: install yj
+        run: |
+          echo "Installing yj to /usr/local/bin"
+          wget https://github.com/sourcegraph/yj/releases/download/v5.0.0/yj-linux -O /usr/local/bin/yj
+          chmod a+x /usr/local/bin/yj
       - name: Checkout heroku buildpacks
         uses: actions/checkout@v2
         with:
@@ -26,6 +31,9 @@ jobs:
           cp .source/heroku/builder-18.toml builders/heroku/18/builder.toml
           cp .source/heroku/builder-20.toml builders/heroku/20/builder.toml
           cp .source/paketo/builder.toml builders/paketo/18/builder.toml
+      - name: patch
+        run : |
+          make patch
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
