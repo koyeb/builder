@@ -46,12 +46,12 @@ jobs:
       - name: Deploy
         if: (github.event_name == 'repository_dispatch') || (github.event_name == 'push' && github.ref == 'refs/heads/main')
         run: |
-          docker tag koyeb/builder:heroku-18 koyeb/builder:latest
-          docker tag koyeb/builder:heroku-18 koyeb/builder:heroku
-          docker tag koyeb/builder:heroku-18 registry.prod.koyeb.com/koyeb/builder:latest
-          docker tag koyeb/builder:heroku-18 registry.prod.koyeb.com/koyeb/builder:heroku-18
-          docker tag koyeb/builder:heroku-18 registry.prod.koyeb.com/koyeb/builder:heroku
+          docker tag koyeb/builder:heroku-20 koyeb/builder:latest
+          docker tag koyeb/builder:heroku-20 koyeb/builder:heroku
+          docker tag koyeb/builder:heroku-20 registry.prod.koyeb.com/koyeb/builder:latest
+          docker tag koyeb/builder:heroku-20 registry.prod.koyeb.com/koyeb/builder:heroku
           docker tag koyeb/builder:heroku-20 registry.prod.koyeb.com/koyeb/builder:heroku-20
+          docker tag koyeb/builder:heroku-18 registry.prod.koyeb.com/koyeb/builder:heroku-18
 
           docker tag koyeb/builder:paketo-18 koyeb/builder:paketo
           docker tag koyeb/builder:paketo-18 registry.prod.koyeb.com/koyeb/builder:paketo-18
