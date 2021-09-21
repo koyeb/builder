@@ -1,12 +1,12 @@
 description = "Base builder for Heroku-18 stack, based on ubuntu:18.04 base image"
 
 [stack]
-id = "heroku-18"
-build-image = "heroku/pack:18-build"
-run-image = "heroku/pack:18"
+  id = "heroku-18"
+  build-image = "heroku/pack:18-build"
+  run-image = "heroku/pack:18"
 
 [lifecycle]
-version = "0.11.4"
+  version = "0.11.4"
 
 [[buildpacks]]
   id = "heroku/java"
@@ -48,7 +48,12 @@ version = "0.11.4"
   id = "heroku/nodejs-function"
   uri = "docker://public.ecr.aws/heroku-buildpacks/heroku-nodejs-function-buildpack@sha256:b981db3820607d3b79339ea1d6ad202d63257d508306e29add0662e7930b953f"
 
+[[buildpacks]]
+  id = "koyeb/custom"
+  uri = "file://buildpacks/custom"
+
 [[order]]
+
   [[order.group]]
     id = "heroku/ruby"
     version = "0.0.1"
@@ -58,7 +63,13 @@ version = "0.11.4"
     version = "0.6.2"
     optional = true
 
+  [[order.group]]
+    id = "koyeb/custom"
+    version = "0.1.0"
+    optional = true
+
 [[order]]
+
   [[order.group]]
     id = "heroku/python"
     version = "0.3.1"
@@ -68,7 +79,13 @@ version = "0.11.4"
     version = "0.6.2"
     optional = true
 
+  [[order.group]]
+    id = "koyeb/custom"
+    version = "0.1.0"
+    optional = true
+
 [[order]]
+
   [[order.group]]
     id = "heroku/scala"
     version = "0.0.90"
@@ -78,7 +95,13 @@ version = "0.11.4"
     version = "0.6.2"
     optional = true
 
+  [[order.group]]
+    id = "koyeb/custom"
+    version = "0.1.0"
+    optional = true
+
 [[order]]
+
   [[order.group]]
     id = "heroku/php"
     version = "0.3.1"
@@ -88,7 +111,13 @@ version = "0.11.4"
     version = "0.6.2"
     optional = true
 
+  [[order.group]]
+    id = "koyeb/custom"
+    version = "0.1.0"
+    optional = true
+
 [[order]]
+
   [[order.group]]
     id = "heroku/go"
     version = "0.3.1"
@@ -98,22 +127,51 @@ version = "0.11.4"
     version = "0.6.2"
     optional = true
 
+  [[order.group]]
+    id = "koyeb/custom"
+    version = "0.1.0"
+    optional = true
+
 [[order]]
+
   [[order.group]]
     id = "heroku/nodejs-function"
     version = "0.6.1"
 
+  [[order.group]]
+    id = "koyeb/custom"
+    version = "0.1.0"
+    optional = true
+
 [[order]]
+
   [[order.group]]
     id = "heroku/java-function"
     version = "0.3.18"
 
+  [[order.group]]
+    id = "koyeb/custom"
+    version = "0.1.0"
+    optional = true
+
 [[order]]
+
   [[order.group]]
     id = "heroku/nodejs"
     version = "0.3.6"
 
+  [[order.group]]
+    id = "koyeb/custom"
+    version = "0.1.0"
+    optional = true
+
 [[order]]
+
   [[order.group]]
     id = "heroku/java"
     version = "0.3.11"
+
+  [[order.group]]
+    id = "koyeb/custom"
+    version = "0.1.0"
+    optional = true
