@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+layers_dir="$1"
+env_dir="$2/env"
+plan_path="$3"
+
+build_command=$(cat "$2/koyeb/build_command")
+echo "[INFO] Running custom build command: \""$build_command"\""
+
+bash -c "$build_command"
+
+exit 0

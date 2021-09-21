@@ -8,4 +8,4 @@ if [[ "$out" -gt "1" ]]; then
 fi
 
 load=$(cat $1 | yj -t)
-echo $load | jq '.buildpacks |= . + [{"id": "koyeb/build-command", "uri": "docker://koyeb/build-command-buildpack"}]' | jq '.order[].group |= . + [{"id": "koyeb/build-command", "version": "0.0.1", "optional": true}]' | yj -jt -i > $1
+echo $load | jq '.buildpacks |= . + [{"id": "koyeb/custom", "uri": "file://buildpacks/custom"}]' | jq '.order[].group |= . + [{"id": "koyeb/custom", "version": "0.1.0", "optional": true}]' | yj -jt -i > $1

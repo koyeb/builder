@@ -1,0 +1,5 @@
+[buildpack]
+uri = "."
+
+[[dependencies]]
+uri = "file://buildpacks/build-command"

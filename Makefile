@@ -40,5 +40,14 @@ set-experimental:
 	@echo "> Setting experimental"
 	$(PACK_CMD) config experimental true
 
+build-command:
+	$(PACK_CMD) buildpack package koyeb/build-command --config ./buildpacks/build-command/package.toml
+
+custom:
+	$(PACK_CMD) buildpack package koyeb/custom --config ./buildpacks/custom/package.toml
+
+buildpacks: build-command custom
+
+.PHONY: buildpacks
 SAMPLES_ROOT:=.
-build-root:
+build-root: buildpacks
