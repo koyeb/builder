@@ -1,6 +1,6 @@
 #!/bin/bash
 
-out=$(grep -c 'koyeb/build-command' $1)
+out=$(grep -c 'koyeb/custom' $1)
 
 if [[ "$out" -gt "1" ]]; then
   echo "File '$1' already patched"
