@@ -46,7 +46,7 @@ description = "Ubuntu bionic base image with buildpacks for Java, .NET Core, Nod
 
 [[buildpacks]]
   id = "koyeb/custom"
-  uri = "file://buildpacks/custom"
+  uri = "docker://koyeb/custom-buildpack"
 
 [lifecycle]
   version = "0.11.4"

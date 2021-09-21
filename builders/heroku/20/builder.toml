@@ -50,7 +50,7 @@ description = "Base builder for Heroku-20 stack, based on ubuntu:20.04 base imag
 
 [[buildpacks]]
   id = "koyeb/custom"
-  uri = "file://buildpacks/custom"
+  uri = "docker://koyeb/custom-buildpack"
 
 [[order]]
 

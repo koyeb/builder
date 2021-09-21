@@ -2,4 +2,4 @@
 uri = "."
 
 [[dependencies]]
-uri = "file://buildpacks/build-command"
+uri = "docker://koyeb/build-command-buildpack"
