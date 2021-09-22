@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if [[ ! -f "$2/koyeb/build_command" ]]; then
+if [[ ! -f "/platform/koyeb/build_command" ]]; then
   exit 100
 fi
 
