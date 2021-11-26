@@ -41,7 +41,6 @@ jobs:
           tar -xvf pack.tgz
       - name: Build
         run: |
-          PACK_CMD=./pack make build-paketo
           PACK_CMD=./pack make build-heroku
       - name: Deploy
         if: (github.event_name == 'repository_dispatch') || (github.event_name == 'push' && github.ref == 'refs/heads/main')
@@ -53,11 +52,7 @@ jobs:
           docker tag koyeb/builder:heroku-20 registry.prod.koyeb.com/koyeb/builder:heroku-20
           docker tag koyeb/builder:heroku-18 registry.prod.koyeb.com/koyeb/builder:heroku-18
 
-          docker tag koyeb/builder:paketo-18 koyeb/builder:paketo
-          docker tag koyeb/builder:paketo-18 registry.prod.koyeb.com/koyeb/builder:paketo-18
-          docker tag koyeb/builder:paketo-18 registry.prod.koyeb.com/koyeb/builder:paketo
-
-          for tag in latest heroku heroku-18 heroku-20 paketo paketo-18; do
+          for tag in latest heroku heroku-18 heroku-20; do
             docker push koyeb/builder:$tag
             docker push registry.prod.koyeb.com/koyeb/builder:$tag
           done

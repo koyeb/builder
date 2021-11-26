@@ -21,16 +21,10 @@ jobs:
         with:
           repository: heroku/pack-images
           path: .source/heroku
-      - name: Checkout paketo buildpakcs
-        uses: actions/checkout@v2
-        with:
-          repository: paketo-buildpacks/full-builder
-          path: .source/paketo
       - name: copy
         run: |
           cp .source/heroku/builder-18.toml builders/heroku/18/builder.toml
           cp .source/heroku/builder-20.toml builders/heroku/20/builder.toml
-          cp .source/paketo/builder.toml builders/paketo/18/builder.toml
       - name: patch
         run : |
           make patch
