@@ -1,0 +1,15 @@
+ARG BASE_IMAGE
+FROM ${BASE_IMAGE}
+
+RUN ln -s /workspace /app
+
+ARG pack_uid=1000
+ARG pack_gid=1000
+
+RUN groupadd koyeb --gid ${pack_gid} && \
+  useradd koyeb -u ${pack_uid} -g ${pack_gid} -s /bin/bash -m
+
+ARG STACK
+LABEL io.buildpacks.stack.id="${STACK}"
+USER koyeb
+ENV HOME /app

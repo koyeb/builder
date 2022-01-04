@@ -41,10 +41,18 @@ jobs:
           tar -xvf pack.tgz
       - name: Build
         run: |
+          PACK_CMD=./pack make images
           PACK_CMD=./pack make build-heroku
       - name: Deploy
         if: (github.event_name == 'repository_dispatch') || (github.event_name == 'push' && github.ref == 'refs/heads/main')
         run: |
+          # publish base images
+          docker push koyeb/pack:20
+          docker push koyeb/pack:20-build
+          docker push koyeb/pack:18
+          docker push koyeb/pack:18-build
+
+          # publish builder
           docker tag koyeb/builder:heroku-20 koyeb/builder:latest
           docker tag koyeb/builder:heroku-20 koyeb/builder:heroku
           docker tag koyeb/builder:heroku-20 registry.prod.koyeb.com/koyeb/builder:latest
