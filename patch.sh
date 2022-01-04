@@ -1,5 +1,18 @@
 #!/bin/bash
 
+function patch_koyeb_images() {
+  echo "patching koyeb images"
+  out=$(grep -c 'koyeb/pack' $1)
+
+  if [[ "$out" -gt "1" ]]; then
+    echo "File '$1' already patched with koyeb images"
+    return
+  fi
+
+  load=$(cat $1 | yj -t)
+  echo $load | jq '.stack["build-image"] |= "koyeb/pack:" + split(":")[1]' | jq '.stack["run-image"] |= "koyeb/pack:" + split(":")[1]' |  yj -jt -i > $1
+}
+
 function patch_koyeb_custom() {
   echo "patching koyeb custom"
   out=$(grep -c 'koyeb/custom' $1)
@@ -22,5 +35,6 @@ function patch_heroku_nodejs() {
   echo $load | jq '.buildpacks[] |= if .id == $id then .uri=$image else . end' --arg image "$image" --arg id "$id" | jq '.order[].group[] |= if .id == $id then .version=$version else . end' --arg version "$version" --arg id "$id"  | yj -jt -i > $1
 }
 
+patch_koyeb_images $1
 patch_koyeb_custom $1
 patch_heroku_nodejs $1
