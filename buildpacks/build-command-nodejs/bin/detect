@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+if [[ ! -f "/platform/koyeb/build_command" ]]; then
+  exit 100
+fi
+
+exit 0

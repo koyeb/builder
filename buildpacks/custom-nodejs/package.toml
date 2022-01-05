@@ -1,0 +1,5 @@
+[buildpack]
+uri = "."
+
+[[dependencies]]
+uri = "docker://koyeb/build-command-nodejs"

@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+dir_name="$0"
+layers_dir="$1"
+env_dir="$2/env"
+plan_path="$3"
+build_dir=$(pwd)
+
+build_command=$(cat "$2/koyeb/build_command")
+echo "[INFO] Found custom build command: \""$build_command"\""
+load=$(cat $build_dir/package.json | jq .)
+
+echo $load | jq ".scripts |= if .[\"heroku-postbuild\"] then .[\"heroku-postbuild\"] = \"$build_command && \" + .[\"heroku-postbuild\"] else .[\"heroku-postbuild\"] = \"$build_command\" end" > $build_dir/package.json
+
+
+exit 0

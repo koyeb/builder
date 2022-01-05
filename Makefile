@@ -47,12 +47,18 @@ set-experimental:
 	$(PACK_CMD) config experimental true
 
 build-command:
-	$(PACK_CMD) buildpack package koyeb/build-command-buildpack --config ./buildpacks/build-command/package.toml
+	$(PACK_CMD) buildpack package koyeb/build-command --config ./buildpacks/build-command/package.toml
 
-custom:
-	$(PACK_CMD) buildpack package koyeb/custom-buildpack --config ./buildpacks/custom/package.toml
+custom: build-command
+	$(PACK_CMD) buildpack package koyeb/buildpack-custom --config ./buildpacks/custom/package.toml
 
-buildpacks: build-command custom
+build-command-nodejs:
+	$(PACK_CMD) buildpack package koyeb/build-command-nodejs --config ./buildpacks/build-command-nodejs/package.toml
+
+custom-nodejs: build-command-nodejs
+	$(PACK_CMD) buildpack package koyeb/buildpack-custom-nodejs --config ./buildpacks/custom-nodejs/package.toml
+
+buildpacks: custom custom-nodejs
 
 .PHONY: buildpacks
 SAMPLES_ROOT:=.

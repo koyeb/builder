@@ -1,0 +1,11 @@
+api = "0.6"
+
+[buildpack]
+  id = "koyeb/custom-nodejs"
+  version = "0.1.0"
+
+[[order]]
+
+[[order.group]]
+  id = "koyeb/build-command-nodejs"
+  version = "0.1.0"
