@@ -41,8 +41,8 @@ description = "Base builder for Heroku-18 stack, based on ubuntu:18.04 base imag
   uri = "https://cnb-shim.herokuapp.com/v1/heroku/go?version=0.3.1&name=Go"
 
 [[buildpacks]]
-  id = "heroku/nodejs"
-  uri = "docker://public.ecr.aws/heroku-buildpacks/heroku-nodejs-buildpack@sha256:30ab86eed55dd816fa45045dd549db97c8cfd5b9c492eae79b3095a3fafaf3a5"
+  id = "koyeb/nodejs"
+  uri = "docker://koyeb/nodejs-buildpack@sha256:0ae30e6646f5d4b35f0743bc8270769bf20dc8dba57c968ff0f1441e8be4af73"
 
 [[buildpacks]]
   id = "heroku/nodejs-function"
@@ -166,8 +166,8 @@ description = "Base builder for Heroku-18 stack, based on ubuntu:18.04 base imag
     optional = true
 
   [[order.group]]
-    id = "heroku/nodejs"
-    version = "0.3.8"
+    id = "koyeb/nodejs"
+    version = "0.3.9"
 
 [[order]]
 

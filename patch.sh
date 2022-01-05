@@ -30,9 +30,10 @@ function patch_heroku_nodejs() {
   echo "patching heroku nodejs"
   load=$(cat $1 | yj -t)
   id="heroku/nodejs"
-  version="0.3.8"
-  image="docker://public.ecr.aws/heroku-buildpacks/heroku-nodejs-buildpack@sha256:30ab86eed55dd816fa45045dd549db97c8cfd5b9c492eae79b3095a3fafaf3a5"
-  echo $load | jq '.buildpacks[] |= if .id == $id then .uri=$image else . end' --arg image "$image" --arg id "$id" | jq '.order[].group[] |= if .id == $id then .version=$version else . end' --arg version "$version" --arg id "$id"  | yj -jt -i > $1
+  new="koyeb/nodejs"
+  version="0.3.9"
+  image="docker://koyeb/nodejs-buildpack@sha256:0ae30e6646f5d4b35f0743bc8270769bf20dc8dba57c968ff0f1441e8be4af73"
+  echo $load | jq '.buildpacks[] |= if .id == $id then .uri=$image else . end' --arg image "$image" --arg id "$id" | jq '.buildpacks[] |= if .id == $id then .id=$new else . end' --arg id "$id" --arg new $new | jq '.order[].group |= if .[1].id == $id then .[1]={"id":$new,"version":$version} else . end' --arg id "$id" --arg new $new --arg version "$version"| yj -jt -i > $1
 }
 
 patch_koyeb_images $1
