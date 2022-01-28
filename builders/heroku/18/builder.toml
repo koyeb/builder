@@ -42,7 +42,7 @@ description = "Base builder for Heroku-18 stack, based on ubuntu:18.04 base imag
 
 [[buildpacks]]
   id = "koyeb/nodejs"
-  uri = "docker://koyeb/nodejs-buildpack@sha256:be965c2187c9b17a9ae76b7631d186af20bfbf910868b24cac36d8ac66e4e782"
+  uri = "docker://koyeb/nodejs-buildpack@sha256:e83fdee4c70a9ebb616899f55ded87cb3ccc9aac22847e95f8483694bf4792cd"
 
 [[buildpacks]]
   id = "heroku/nodejs-function"
@@ -167,7 +167,7 @@ description = "Base builder for Heroku-18 stack, based on ubuntu:18.04 base imag
 
   [[order.group]]
     id = "koyeb/nodejs"
-    version = "0.3.9"
+    version = "0.4.1"
 
 [[order]]
 
