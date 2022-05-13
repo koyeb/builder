@@ -6,7 +6,7 @@ description = "Base builder for Heroku-18 stack, based on ubuntu:18.04 base imag
   run-image = "koyeb/pack:18"
 
 [lifecycle]
-  version = "0.13.5"
+  version = "0.14.0"
 
 [[buildpacks]]
   id = "heroku/java"
