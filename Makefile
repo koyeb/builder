@@ -16,8 +16,8 @@ patch:
 images:
 	@docker build --pull -f Dockerfile.build --build-arg STACK=heroku-18 --build-arg BASE_IMAGE=heroku/heroku:18-build -t koyeb/pack:18-build .
 	@docker build --pull -f Dockerfile.build --build-arg STACK=heroku-20 --build-arg BASE_IMAGE=heroku/heroku:20-build -t koyeb/pack:20-build .
-	@docker build --pull -f Dockerfile.run --build-arg STACK=heroku-18 --build-arg BASE_IMAGE=heroku/heroku:18 -t koyeb/pack:18 .
-	@docker build --pull -f Dockerfile.run --build-arg STACK=heroku-20 --build-arg BASE_IMAGE=heroku/heroku:20 -t koyeb/pack:20 .
+	@docker build --pull -f Dockerfile.run --build-arg STACK=heroku-18 --build-arg BASE_IMAGE=heroku/heroku:18 -t koyeb/pack:18-cnb .
+	@docker build --pull -f Dockerfile.run --build-arg STACK=heroku-20 --build-arg BASE_IMAGE=heroku/heroku:20 -t koyeb/pack:20-cnb .
 
 build-heroku: build-heroku-18 build-heroku-20
 
