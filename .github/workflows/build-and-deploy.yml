@@ -48,10 +48,10 @@ jobs:
         if: (github.event_name == 'repository_dispatch') || (github.event_name == 'push' && github.ref == 'refs/heads/main')
         run: |
           # publish base images
-          docker push koyeb/pack:20
-          docker push koyeb/pack:20-build
-          docker push koyeb/pack:18
-          docker push koyeb/pack:18-build
+          docker push koyeb/pack:20-cnb
+          docker push koyeb/pack:20-cnb-build
+          docker push koyeb/pack:18-cnb
+          docker push koyeb/pack:18-cnb-build
 
           # publish builder
           docker tag koyeb/builder:heroku-20 koyeb/builder:latest
