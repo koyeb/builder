@@ -6,19 +6,23 @@ description = "Base builder for Heroku-18 stack, based on ubuntu:18.04 base imag
   run-image = "koyeb/pack:18-cnb"
 
 [lifecycle]
-  version = "0.14.0"
+  version = "0.14.1"
 
 [[buildpacks]]
   id = "heroku/java"
-  uri = "docker://public.ecr.aws/heroku-buildpacks/heroku-java-buildpack@sha256:06938365d0bb9c2b9e3d54b50331161541a4666e2fdb14b4880c9ae95d07b2b7"
+  uri = "docker://public.ecr.aws/heroku-buildpacks/heroku-java-buildpack@sha256:e3031bc05816379243c5f732e4acb4345f7c968977b91bae0e40dd954894b87e"
 
 [[buildpacks]]
   id = "heroku/scala"
-  uri = "docker://public.ecr.aws/heroku-buildpacks/heroku-scala-buildpack@sha256:02a26d364465a567782806effa2afbf4b992a1e15453bb8e62c5da27118dc7e6"
+  uri = "https://cnb-shim.herokuapp.com/v1/heroku/scala?version=0.0.0&name=Scala"
 
 [[buildpacks]]
   id = "heroku/java-function"
-  uri = "docker://public.ecr.aws/heroku-buildpacks/heroku-java-function-buildpack@sha256:c913b5581cd8a935058f680e6de6b7d9fe66237c379dfddd24c2267c3f41c9ba"
+  uri = "docker://public.ecr.aws/heroku-buildpacks/heroku-java-function-buildpack@sha256:bd64e489115813777d8723f04944a98fcf7993329d55db6c6c80a9b1c05599d0"
+
+[[buildpacks]]
+  id = "heroku/gradle"
+  uri = "https://cnb-shim.herokuapp.com/v1/heroku/gradle?version=0.0.0&name=Gradle"
 
 [[buildpacks]]
   id = "heroku/ruby"
@@ -30,23 +34,23 @@ description = "Base builder for Heroku-18 stack, based on ubuntu:18.04 base imag
 
 [[buildpacks]]
   id = "heroku/python"
-  uri = "https://cnb-shim.herokuapp.com/v1/heroku/python?version=0.3.1&name=Python"
+  uri = "https://cnb-shim.herokuapp.com/v1/heroku/python?version=0.0.0&name=Python"
 
 [[buildpacks]]
   id = "heroku/php"
-  uri = "https://cnb-shim.herokuapp.com/v1/heroku/php?version=0.3.1&name=PHP"
+  uri = "https://cnb-shim.herokuapp.com/v1/heroku/php?version=0.0.0&name=PHP"
 
 [[buildpacks]]
   id = "heroku/go"
-  uri = "https://cnb-shim.herokuapp.com/v1/heroku/go?version=0.3.1&name=Go"
+  uri = "https://cnb-shim.herokuapp.com/v1/heroku/go?version=0.0.0&name=Go"
 
 [[buildpacks]]
   id = "koyeb/nodejs"
-  uri = "docker://koyeb/nodejs-buildpack@sha256:a909b018c78ddc584d4398806e45369ca28c1f77c269019c70dee98f5c4bcb18"
+  uri = "docker://koyeb/nodejs-buildpack@sha256:61a9bdc0c1a9ccbb8dd466f9acd4e68597a3acbaed1153215c05b5f4a66fb0a4"
 
 [[buildpacks]]
   id = "heroku/nodejs-function"
-  uri = "docker://public.ecr.aws/heroku-buildpacks/heroku-nodejs-function-buildpack@sha256:7c7e4453ff62639bd2044001c0f504092c53ecff5b3a720adef7866611e5dea7"
+  uri = "docker://public.ecr.aws/heroku-buildpacks/heroku-nodejs-function-buildpack@sha256:648d2f31d90e277d377fd26667a7f5abbd84f00bed37a4a2fb4bc5a061eb1f21"
 
 [[buildpacks]]
   id = "koyeb/custom"
@@ -76,7 +80,7 @@ description = "Base builder for Heroku-18 stack, based on ubuntu:18.04 base imag
 
   [[order.group]]
     id = "heroku/python"
-    version = "0.3.1"
+    version = "0.0.0"
 
   [[order.group]]
     id = "heroku/procfile"
@@ -92,7 +96,7 @@ description = "Base builder for Heroku-18 stack, based on ubuntu:18.04 base imag
 
   [[order.group]]
     id = "heroku/scala"
-    version = "0.0.92"
+    version = "0.0.0"
 
   [[order.group]]
     id = "heroku/procfile"
@@ -108,7 +112,7 @@ description = "Base builder for Heroku-18 stack, based on ubuntu:18.04 base imag
 
   [[order.group]]
     id = "heroku/php"
-    version = "0.3.1"
+    version = "0.0.0"
 
   [[order.group]]
     id = "heroku/procfile"
@@ -124,7 +128,7 @@ description = "Base builder for Heroku-18 stack, based on ubuntu:18.04 base imag
 
   [[order.group]]
     id = "heroku/go"
-    version = "0.3.1"
+    version = "0.0.0"
 
   [[order.group]]
     id = "heroku/procfile"
@@ -140,7 +144,7 @@ description = "Base builder for Heroku-18 stack, based on ubuntu:18.04 base imag
 
   [[order.group]]
     id = "heroku/nodejs-function"
-    version = "0.9.3"
+    version = "0.9.5"
 
   [[order.group]]
     id = "koyeb/custom"
@@ -151,7 +155,7 @@ description = "Base builder for Heroku-18 stack, based on ubuntu:18.04 base imag
 
   [[order.group]]
     id = "heroku/java-function"
-    version = "0.3.30"
+    version = "0.3.31"
 
   [[order.group]]
     id = "koyeb/custom"
@@ -173,7 +177,27 @@ description = "Base builder for Heroku-18 stack, based on ubuntu:18.04 base imag
 
   [[order.group]]
     id = "heroku/java"
-    version = "0.5.0"
+    version = "0.6.0"
+
+  [[order.group]]
+    id = "koyeb/custom"
+    version = "0.1.0"
+    optional = true
+
+[[order]]
+
+  [[order.group]]
+    id = "heroku/jvm"
+    version = "1.0.1"
+
+  [[order.group]]
+    id = "heroku/gradle"
+    version = "0.0.0"
+
+  [[order.group]]
+    id = "heroku/procfile"
+    version = "1.0.1"
+    optional = true
 
   [[order.group]]
     id = "koyeb/custom"
