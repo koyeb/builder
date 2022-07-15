@@ -30,7 +30,7 @@ description = "Base builder for Heroku-18 stack, based on ubuntu:18.04 base imag
 
 [[buildpacks]]
   id = "heroku/procfile"
-  uri = "docker://docker.io/heroku/procfile-cnb:1.0.1"
+  uri = "docker://docker.io/heroku/procfile-cnb:1.0.2"
 
 [[buildpacks]]
   id = "heroku/python"
@@ -68,7 +68,7 @@ description = "Base builder for Heroku-18 stack, based on ubuntu:18.04 base imag
 
   [[order.group]]
     id = "heroku/procfile"
-    version = "1.0.1"
+    version = "1.0.2"
     optional = true
 
   [[order.group]]
@@ -84,7 +84,7 @@ description = "Base builder for Heroku-18 stack, based on ubuntu:18.04 base imag
 
   [[order.group]]
     id = "heroku/procfile"
-    version = "1.0.1"
+    version = "1.0.2"
     optional = true
 
   [[order.group]]
@@ -100,7 +100,7 @@ description = "Base builder for Heroku-18 stack, based on ubuntu:18.04 base imag
 
   [[order.group]]
     id = "heroku/procfile"
-    version = "1.0.1"
+    version = "1.0.2"
     optional = true
 
   [[order.group]]
@@ -116,7 +116,7 @@ description = "Base builder for Heroku-18 stack, based on ubuntu:18.04 base imag
 
   [[order.group]]
     id = "heroku/procfile"
-    version = "1.0.1"
+    version = "1.0.2"
     optional = true
 
   [[order.group]]
@@ -132,7 +132,7 @@ description = "Base builder for Heroku-18 stack, based on ubuntu:18.04 base imag
 
   [[order.group]]
     id = "heroku/procfile"
-    version = "1.0.1"
+    version = "1.0.2"
     optional = true
 
   [[order.group]]
@@ -196,7 +196,7 @@ description = "Base builder for Heroku-18 stack, based on ubuntu:18.04 base imag
 
   [[order.group]]
     id = "heroku/procfile"
-    version = "1.0.1"
+    version = "1.0.2"
     optional = true
 
   [[order.group]]
