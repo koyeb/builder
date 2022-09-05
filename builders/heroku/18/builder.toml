@@ -171,7 +171,7 @@ description = "Base builder for Heroku-18 stack, based on ubuntu:18.04 base imag
 
   [[order.group]]
     id = "koyeb/nodejs"
-    version = "0.5.1"
+    version = "0.5.8"
 
 [[order]]
 

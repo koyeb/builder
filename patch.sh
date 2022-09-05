@@ -31,8 +31,8 @@ function patch_heroku_nodejs() {
   load=$(cat $1 | yj -t)
   id="heroku/nodejs"
   new="koyeb/nodejs"
-  version="0.5.1"
-  image="docker://koyeb/nodejs-buildpack@sha256:61a9bdc0c1a9ccbb8dd466f9acd4e68597a3acbaed1153215c05b5f4a66fb0a4"
+  version="0.5.8"
+  image="docker://koyeb/nodejs-buildpack@sha256:96ef65ea1e7260c19f392c3b6da2f00cf917937f0f7e8087ee4d5c5a982cc2e9"
   echo $load | jq '.buildpacks[] |= if .id == $id then .uri=$image else . end' --arg image "$image" --arg id "$id" | jq '.buildpacks[] |= if .id == $id then .id=$new else . end' --arg id "$id" --arg new $new | jq '.order[].group |= if .[1].id == $id then .[1]={"id":$new,"version":$version} else . end' --arg id "$id" --arg new $new --arg version "$version"| yj -jt -i > $1
 }
 
