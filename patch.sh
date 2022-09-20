@@ -36,6 +36,17 @@ function patch_heroku_nodejs() {
   echo $load | jq '.buildpacks[] |= if .id == $id then .uri=$image else . end' --arg image "$image" --arg id "$id" | jq '.buildpacks[] |= if .id == $id then .id=$new else . end' --arg id "$id" --arg new $new | jq '.order[].group |= if .[1].id == $id then .[1]={"id":$new,"version":$version} else . end' --arg id "$id" --arg new $new --arg version "$version"| yj -jt -i > $1
 }
 
+function patch_heroku_ruby() {
+  echo "patching heroku ruby"
+  load=$(cat $1 | yj -t)
+  id="heroku/ruby"
+  new="heroku/ruby"
+  version="0.0.0"
+  image="https://cnb-shim.herokuapp.com/v1/heroku/ruby?version=0.0.0&name=Ruby"
+  echo $load | jq '.buildpacks[] |= if .id == $id then .uri=$image else . end' --arg image "$image" --arg id "$id" | jq '.buildpacks[] |= if .id == $id then .id=$new else . end' --arg id "$id" --arg new $new | jq '.order[].group |= if .[0].id == $id then .[0]={"id":$new,"version":$version} else . end' --arg id "$id" --arg new $new --arg version "$version"| yj -jt -i > $1
+}
+
 patch_koyeb_images $1
-patch_koyeb_custom $1
 patch_heroku_nodejs $1
+patch_heroku_ruby $1
+patch_koyeb_custom $1
