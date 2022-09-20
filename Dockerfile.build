@@ -18,3 +18,6 @@ ENV CNB_STACK_ID "${STACK}"
 LABEL io.buildpacks.stack.id="${STACK}"
 
 USER koyeb
+
+ENV HOME "/home/koyeb"
+RUN git config --global --add safe.directory '*'
