@@ -40,11 +40,10 @@ jobs:
         run: |
           curl -s -L -o pack.tgz ${{ steps.pack-download-url.outputs.result }}
           tar -xvf pack.tgz
-      - name: Build
+      - name: Build images
         run: |
           PACK_CMD=./pack make images
-          PACK_CMD=./pack make build-heroku
-      - name: Deploy
+      - name: Deploy images
         if: (github.event_name == 'repository_dispatch') || (github.event_name == 'push' && github.ref == 'refs/heads/main')
         run: |
           # publish base images
@@ -52,7 +51,12 @@ jobs:
           docker push koyeb/pack:20-cnb-build
           docker push koyeb/pack:18-cnb
           docker push koyeb/pack:18-cnb-build
-
+      - name: Build
+        run: |
+          PACK_CMD=./pack make build-heroku
+      - name: Deploy
+        if: (github.event_name == 'repository_dispatch') || (github.event_name == 'push' && github.ref == 'refs/heads/main')
+        run: |
           # publish builder
           docker tag koyeb/builder:heroku-20 koyeb/builder:latest
           docker tag koyeb/builder:heroku-20 koyeb/builder:heroku
