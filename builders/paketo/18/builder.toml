@@ -48,6 +48,10 @@ description = "Ubuntu bionic base image with buildpacks for Java, .NET Core, Nod
   id = "koyeb/custom"
   uri = "docker://koyeb/custom-buildpack"
 
+[[buildpacks]]
+  id = "heroku/clojure"
+  uri = "https://cnb-shim.herokuapp.com/v1/heroku/clojure?version=0.0.0&name=Clojure"
+
 [lifecycle]
   version = "0.13.0"
 
@@ -170,6 +174,17 @@ description = "Ubuntu bionic base image with buildpacks for Java, .NET Core, Nod
   [[order.group]]
     id = "koyeb/custom"
     version = "0.1.0"
+    optional = true
+
+[[order]]
+
+  [[order.group]]
+    id = "heroku/clojure"
+    version = "0.0.0"
+
+  [[order.group]]
+    id = "heroku/procfile"
+    version = "1.0.2"
     optional = true
 
 [stack]

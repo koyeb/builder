@@ -26,7 +26,7 @@ description = "Base builder for Heroku-20 stack, based on ubuntu:20.04 base imag
 
 [[buildpacks]]
   id = "heroku/ruby"
-  uri = "docker://public.ecr.aws/heroku-buildpacks/heroku-ruby-buildpack@sha256:3eeb3773cdbd29d4fb0d578f7781fe8c525de73593480e2740b7143262e5bef5"
+  uri = "https://cnb-shim.herokuapp.com/v1/heroku/ruby?version=0.0.0&name=Ruby"
 
 [[buildpacks]]
   id = "heroku/procfile"
@@ -53,6 +53,10 @@ description = "Base builder for Heroku-20 stack, based on ubuntu:20.04 base imag
   uri = "docker://public.ecr.aws/heroku-buildpacks/heroku-nodejs-function-buildpack@sha256:bdab746cca0e189b02c851d90e39d8367c16d897c21b7248ae30b2993cdfafb1"
 
 [[buildpacks]]
+  id = "heroku/clojure"
+  uri = "https://cnb-shim.herokuapp.com/v1/heroku/clojure?version=0.0.0&name=Clojure"
+
+[[buildpacks]]
   id = "koyeb/custom"
   uri = "docker://koyeb/buildpack-custom"
 
@@ -64,7 +68,7 @@ description = "Base builder for Heroku-20 stack, based on ubuntu:20.04 base imag
 
   [[order.group]]
     id = "heroku/ruby"
-    version = "0.1.3"
+    version = "0.0.0"
 
   [[order.group]]
     id = "heroku/procfile"
@@ -170,7 +174,7 @@ description = "Base builder for Heroku-20 stack, based on ubuntu:20.04 base imag
     optional = true
 
   [[order.group]]
-    id = "koyeb/nodejs"
+    id = "heroku/nodejs"
     version = "0.5.8"
 
 [[order]]
@@ -192,6 +196,22 @@ description = "Base builder for Heroku-20 stack, based on ubuntu:20.04 base imag
 
   [[order.group]]
     id = "heroku/gradle"
+    version = "0.0.0"
+
+  [[order.group]]
+    id = "heroku/procfile"
+    version = "1.0.2"
+    optional = true
+
+  [[order.group]]
+    id = "koyeb/custom"
+    version = "0.1.0"
+    optional = true
+
+[[order]]
+
+  [[order.group]]
+    id = "heroku/clojure"
     version = "0.0.0"
 
   [[order.group]]
