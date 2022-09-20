@@ -46,7 +46,22 @@ function patch_heroku_ruby() {
   echo $load | jq '.buildpacks[] |= if .id == $id then .uri=$image else . end' --arg image "$image" --arg id "$id" | jq '.buildpacks[] |= if .id == $id then .id=$new else . end' --arg id "$id" --arg new $new | jq '.order[].group |= if .[0].id == $id then .[0]={"id":$new,"version":$version} else . end' --arg id "$id" --arg new $new --arg version "$version"| yj -jt -i > $1
 }
 
+function patch_heroku_clojure() {
+  echo "patching add clojure"
+  out=$(grep -c 'heroku/clojure' $1)
+
+  if [[ "$out" -gt "1" ]]; then
+    echo "File '$1' already patched with clojure"
+    return
+  fi
+
+  load=$(cat $1 | yj -t)
+  echo $load | jq '.buildpacks |= . + [{"id": "heroku/clojure", "uri": "https://cnb-shim.herokuapp.com/v1/heroku/clojure?version=0.0.0&name=Clojure"}]' | jq '.order |= . + [{"group": [{"id": "heroku/clojure", "version": "0.0.0"}, {"id": "heroku/procfile", "version": "1.0.2", "optional": true}]}]' | yj -jt -i > $1
+}
+
+
 patch_koyeb_images $1
 patch_heroku_nodejs $1
+patch_heroku_clojure $1
 patch_heroku_ruby $1
 patch_koyeb_custom $1
