@@ -19,7 +19,7 @@ jobs:
       - name: Checkout heroku buildpacks
         uses: actions/checkout@v2
         with:
-          repository: heroku/pack-images
+          repository: heroku/builder
           path: .source/heroku
       - name: copy
         run: |
