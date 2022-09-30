@@ -10,7 +10,7 @@ description = "Base builder for Heroku-18 stack, based on ubuntu:18.04 base imag
 
 [[buildpacks]]
   id = "heroku/java"
-  uri = "docker://public.ecr.aws/heroku-buildpacks/heroku-java-buildpack@sha256:7fdca04c10eb4cab060b6e8f49b9e7420c51e95ce983c57beaba4cc7278d13b2"
+  uri = "docker://public.ecr.aws/heroku-buildpacks/heroku-java-buildpack@sha256:e33188188acb8631ccd1ee9fbd7eb7314b1a4aad4b3ecf0072b3bab23839012e"
 
 [[buildpacks]]
   id = "heroku/scala"
@@ -18,7 +18,7 @@ description = "Base builder for Heroku-18 stack, based on ubuntu:18.04 base imag
 
 [[buildpacks]]
   id = "heroku/java-function"
-  uri = "docker://public.ecr.aws/heroku-buildpacks/heroku-java-function-buildpack@sha256:d269fe5610ea6789e015b8e22ee37e7e245f53ea1cae130d83a45d89310e043f"
+  uri = "docker://public.ecr.aws/heroku-buildpacks/heroku-java-function-buildpack@sha256:05db69b29422852362aa3b8ba06cd33a0e0930f2f037ec52baf268f99d03965f"
 
 [[buildpacks]]
   id = "heroku/gradle"
@@ -50,7 +50,7 @@ description = "Base builder for Heroku-18 stack, based on ubuntu:18.04 base imag
 
 [[buildpacks]]
   id = "heroku/nodejs-function"
-  uri = "docker://public.ecr.aws/heroku-buildpacks/heroku-nodejs-function-buildpack@sha256:bdab746cca0e189b02c851d90e39d8367c16d897c21b7248ae30b2993cdfafb1"
+  uri = "docker://public.ecr.aws/heroku-buildpacks/heroku-nodejs-function-buildpack@sha256:ca27ed30a77ca62a3ab5d233034edf71669d79823b72f9e5fc71e9c1bc0c927d"
 
 [[buildpacks]]
   id = "heroku/clojure"
@@ -148,7 +148,7 @@ description = "Base builder for Heroku-18 stack, based on ubuntu:18.04 base imag
 
   [[order.group]]
     id = "heroku/nodejs-function"
-    version = "0.9.9"
+    version = "0.9.10"
 
   [[order.group]]
     id = "koyeb/custom"
@@ -159,7 +159,7 @@ description = "Base builder for Heroku-18 stack, based on ubuntu:18.04 base imag
 
   [[order.group]]
     id = "heroku/java-function"
-    version = "0.3.35"
+    version = "0.3.36"
 
   [[order.group]]
     id = "koyeb/custom"
@@ -181,7 +181,7 @@ description = "Base builder for Heroku-18 stack, based on ubuntu:18.04 base imag
 
   [[order.group]]
     id = "heroku/java"
-    version = "0.6.3"
+    version = "0.6.4"
 
   [[order.group]]
     id = "koyeb/custom"
@@ -192,7 +192,7 @@ description = "Base builder for Heroku-18 stack, based on ubuntu:18.04 base imag
 
   [[order.group]]
     id = "heroku/jvm"
-    version = "1.0.3"
+    version = "1.0.4"
 
   [[order.group]]
     id = "heroku/gradle"
