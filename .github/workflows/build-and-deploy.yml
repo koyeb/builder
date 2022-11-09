@@ -47,20 +47,27 @@ jobs:
         if: (github.event_name == 'repository_dispatch') || (github.event_name == 'push' && github.ref == 'refs/heads/main')
         run: |
           # publish base images
+          docker tag koyeb/pack:20-cnb registry.prod.koyeb.com/koyeb/pack:20-cnb
+          docker tag koyeb/pack:20-cnb-build registry.prod.koyeb.com/koyeb/pack:20-cnb-build
           docker push koyeb/pack:20-cnb
           docker push koyeb/pack:20-cnb-build
+          docker push registry.prod.koyeb.com/koyeb/pack:20-cnb
+          docker push registry.prod.koyeb.com/koyeb/pack:20-cnb-build
       - name: Build
         run: |
           PACK_CMD=./pack make build-heroku
+
+          # patch stack registry for internal version
+          make patch-builder-run-image registry.prod.koyeb.com/koyeb
+          REGISTRY=registry.prod.koyeb.com/koyeb PACK_CMD=./pack make build-heroku
       - name: Deploy
         if: (github.event_name == 'repository_dispatch') || (github.event_name == 'push' && github.ref == 'refs/heads/main')
         run: |
           # publish builder
           docker tag koyeb/builder:heroku-20 koyeb/builder:latest
           docker tag koyeb/builder:heroku-20 koyeb/builder:heroku
-          docker tag koyeb/builder:heroku-20 registry.prod.koyeb.com/koyeb/builder:latest
-          docker tag koyeb/builder:heroku-20 registry.prod.koyeb.com/koyeb/builder:heroku
-          docker tag koyeb/builder:heroku-20 registry.prod.koyeb.com/koyeb/builder:heroku-20
+          docker tag registry.prod.koyeb.com/koyeb/builder:heroku-20 registry.prod.koyeb.com/koyeb/builder:latest
+          docker tag registry.prod.koyeb.com/koyeb/builder:heroku-20 registry.prod.koyeb.com/koyeb/builder:heroku
 
           for tag in latest heroku heroku-20; do
             docker push koyeb/builder:$tag

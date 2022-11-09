@@ -1,12 +1,16 @@
 PACK_FLAGS?=
 PACK_BUILD_FLAGS?=--trust-builder
 PACK_CMD?=pack
+REGISTRY?=koyeb
 
 clean: clean-linux
 
 ####################
 ## Linux
 ####################
+
+patch-builder-run-image:
+	./patch-builder.sh $(SAMPLES_ROOT)/builders/heroku/20/builder.toml ${REGISTRY}
 
 patch:
 	./patch.sh $(SAMPLES_ROOT)/builders/heroku/20/builder.toml
@@ -20,7 +24,7 @@ build-heroku: build-heroku-20
 
 build-heroku-20: build-root
 	@echo "> Building 'heroku-20' builder..."
-	$(PACK_CMD) builder create koyeb/builder:heroku-20 --config $(SAMPLES_ROOT)/builders/heroku/20/builder.toml $(PACK_FLAGS)
+	$(PACK_CMD) builder create ${REGISTRY}/builder:heroku-20 --config $(SAMPLES_ROOT)/builders/heroku/20/builder.toml $(PACK_FLAGS)
 
 build-paketo: build-paketo-18
 

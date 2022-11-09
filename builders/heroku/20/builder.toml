@@ -2,8 +2,8 @@ description = "Base builder for Heroku-20 stack, based on ubuntu:20.04 base imag
 
 [stack]
   id = "heroku-20"
-  build-image = "koyeb/pack:20-cnb-build"
-  run-image = "koyeb/pack:20-cnb"
+  build-image = "registry.prod.koyeb.com/pack:20-cnb-build"
+  run-image = "registry.prod.koyeb.com/pack:20-cnb"
 
 [lifecycle]
   version = "0.14.1"
