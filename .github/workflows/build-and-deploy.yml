@@ -49,8 +49,6 @@ jobs:
           # publish base images
           docker push koyeb/pack:20-cnb
           docker push koyeb/pack:20-cnb-build
-          docker push koyeb/pack:18-cnb
-          docker push koyeb/pack:18-cnb-build
       - name: Build
         run: |
           PACK_CMD=./pack make build-heroku
@@ -63,9 +61,8 @@ jobs:
           docker tag koyeb/builder:heroku-20 registry.prod.koyeb.com/koyeb/builder:latest
           docker tag koyeb/builder:heroku-20 registry.prod.koyeb.com/koyeb/builder:heroku
           docker tag koyeb/builder:heroku-20 registry.prod.koyeb.com/koyeb/builder:heroku-20
-          docker tag koyeb/builder:heroku-18 registry.prod.koyeb.com/koyeb/builder:heroku-18
 
-          for tag in latest heroku heroku-18 heroku-20; do
+          for tag in latest heroku heroku-20; do
             docker push koyeb/builder:$tag
             docker push registry.prod.koyeb.com/koyeb/builder:$tag
           done
