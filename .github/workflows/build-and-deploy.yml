@@ -77,9 +77,8 @@ jobs:
           docker tag koyeb/builder:heroku-20 koyeb/builder:beta
           docker tag registry.prod.koyeb.com/koyeb/builder:heroku-20 registry.prod.koyeb.com/koyeb/builder:beta
 
-            docker push koyeb/builder:beta
-            docker push registry.prod.koyeb.com/koyeb/builder:beta
-          done
+          docker push koyeb/builder:beta
+          docker push registry.prod.koyeb.com/koyeb/builder:beta
       - name: Publish buildpack
         if: (github.event_name == 'repository_dispatch') || (github.event_name == 'push' && github.ref == 'refs/heads/main')
         run: |
