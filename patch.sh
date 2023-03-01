@@ -13,6 +13,12 @@ function patch_koyeb_images() {
 	echo $load | jq '.stack["build-image"] |= "koyeb/pack:" + split(":")[1]' | jq '.stack["run-image"] |= "koyeb/pack:" + split(":")[1]' | yj -jt -i >$1
 }
 
+function patch_lifecycle_version() {
+	echo "patching lifecycle version"
+	load=$(cat $1 | yj -t)
+	echo $load | jq '.lifecycle["version"] = "0.15.3"' | yj -jt -i >$1
+}
+
 function patch_koyeb_custom() {
 	echo "patching koyeb custom"
 	out=$(grep -c 'koyeb/custom' $1)
@@ -59,6 +65,7 @@ function patch_heroku_clojure() {
 	echo $load | jq '.buildpacks |= . + [{"id": "heroku/clojure", "uri": "https://cnb-shim.herokuapp.com/v1/heroku/clojure?version=0.0.0&name=Clojure"}]' | jq '.order |= . + [{"group": [{"id": "heroku/clojure", "version": "0.0.0"}, {"id": "heroku/procfile", "version": "2.0.0", "optional": true}]}]' | yj -jt -i >$1
 }
 
+patch_lifecycle_version $1
 patch_koyeb_images $1
 patch_heroku_nodejs $1
 patch_heroku_clojure $1
