@@ -67,7 +67,7 @@ jobs:
           REGISTRY=registry.prod.koyeb.com/koyeb PACK_CMD=./pack make build-heroku
       - name: Test builder
         run: |
-          PACK_CMD=./pack make test
+          PACK_CMD=$PWD/pack make test
       - name: Deploy
         if: (github.event_name == 'repository_dispatch') || (github.event_name == 'push' && github.ref == 'refs/heads/main')
         run: |
