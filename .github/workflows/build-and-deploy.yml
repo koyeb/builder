@@ -4,9 +4,11 @@ on:
   push:
     branches:
       - main
+      - develop
   pull_request:
     branches:
       - main
+      - develop
   repository_dispatch:
     types:
       - pack-release
@@ -48,7 +50,7 @@ jobs:
       - name: Build images
         run: |
           PACK_CMD=./pack make images
-      - name: Deploy images
+      - name: Publish images
         if: (github.event_name == 'repository_dispatch') || (github.event_name == 'push' && github.ref == 'refs/heads/main')
         run: |
           # publish base images
@@ -68,7 +70,17 @@ jobs:
       - name: Test builder
         run: |
           PACK_CMD=$PWD/pack make test
-      - name: Deploy
+      - name: Publish beta buildpack
+        if: (github.event_name == 'push' && github.ref == 'refs/heads/develop')
+        run: |
+          # publish builder
+          docker tag koyeb/builder:heroku-20 koyeb/builder:beta
+          docker tag registry.prod.koyeb.com/koyeb/builder:heroku-20 registry.prod.koyeb.com/koyeb/builder:beta
+
+            docker push koyeb/builder:beta
+            docker push registry.prod.koyeb.com/koyeb/builder:beta
+          done
+      - name: Publish buildpack
         if: (github.event_name == 'repository_dispatch') || (github.event_name == 'push' && github.ref == 'refs/heads/main')
         run: |
           # publish builder
@@ -83,3 +95,10 @@ jobs:
           done
       - name: Clean up
         run: make clean-linux
+      - name: Create Pull Request
+        if: (github.event_name == 'push' && github.ref == 'refs/heads/develop')
+        uses: peter-evans/create-pull-request@v3
+        with:
+          body: |
+            New automated changes ready for review in koyeb/build:beta.
+          base: main

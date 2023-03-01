@@ -3,6 +3,7 @@ pull_request_rules:
     conditions:
       - author=github-actions[bot]
       - check-success=build-linux
+      - base=refs/heads/develop
     actions:
       merge:
         method: merge
