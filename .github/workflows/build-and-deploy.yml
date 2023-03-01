@@ -94,10 +94,3 @@ jobs:
           done
       - name: Clean up
         run: make clean-linux
-      - name: Create Pull Request
-        if: (github.event_name == 'push' && github.ref == 'refs/heads/develop')
-        uses: peter-evans/create-pull-request@v3
-        with:
-          body: |
-            New automated changes ready for review in koyeb/build:beta.
-          base: main
