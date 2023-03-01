@@ -57,6 +57,10 @@ custom-nodejs: build-command-nodejs
 
 buildpacks: custom custom-nodejs
 
-.PHONY: buildpacks
+test:
+	$(MAKE) -C ./test
+
+
+.PHONY: buildpacks test
 SAMPLES_ROOT:=.
 build-root: buildpacks
