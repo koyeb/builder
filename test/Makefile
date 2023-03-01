@@ -8,7 +8,7 @@ SUBDIRS := $(wildcard */)
 all: $(SUBDIRS)
 
 $(SUBDIRS):
-	$(PACK_CMD) build --builder $(BUILDER) --pull-policy if-not-present --lifecycle-image koyeb/repacked-lifecycle -v --path $@ $(subst /,,$@)
+	$(PACK_CMD) build --builder $(BUILDER) --pull-policy if-not-present --lifecycle-image $(LIFECYCLE) -v --path $@ $(subst /,,$@)
 
 .PHONY: all $(SUBDIRS)
 
