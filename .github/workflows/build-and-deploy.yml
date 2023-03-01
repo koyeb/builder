@@ -65,6 +65,9 @@ jobs:
           # patch stack registry for internal version
           REGISTRY=registry.prod.koyeb.com/koyeb make patch-builder-run-image
           REGISTRY=registry.prod.koyeb.com/koyeb PACK_CMD=./pack make build-heroku
+      - name: Test builder
+        run: |
+          PACK_CMD=./pack make test
       - name: Deploy
         if: (github.event_name == 'repository_dispatch') || (github.event_name == 'push' && github.ref == 'refs/heads/main')
         run: |
