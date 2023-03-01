@@ -2,7 +2,7 @@ name: generate
 
 on:
   schedule:
-  - cron: "0 0 * * *"
+    - cron: "0 0 * * *"
   workflow_dispatch:
 
 jobs:
@@ -25,7 +25,7 @@ jobs:
         run: |
           cp .source/heroku/buildpacks-20/builder.toml builders/heroku/20/builder.toml
       - name: patch
-        run : |
+        run: |
           make patch
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
