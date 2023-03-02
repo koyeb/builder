@@ -12,7 +12,12 @@ build_command=$(cat "$2/koyeb/build_command")
 echo "[INFO] Found custom build command: \""$build_command"\""
 load=$(cat $build_dir/package.json | jq .)
 
-echo $load | jq ".scripts |= if .[\"heroku-postbuild\"] then .[\"heroku-postbuild\"] = \"$build_command && \" + .[\"heroku-postbuild\"] else .[\"heroku-postbuild\"] = \"$build_command\" end" > $build_dir/package.json
 
+if [[ -f $build_dir/yarn.lock ]]; then
+	# use heroku-build script for yarn to override actual build command
+	echo $load | jq ".scripts |= if .[\"heroku-build\"] then .[\"heroku-build\"] = \"$build_command && \" + .[\"heroku-build\"] else .[\"heroku-build\"] = \"$build_command\" end" >$build_dir/package.json
+else
+	echo $load | jq ".scripts |= if .[\"heroku-postbuild\"] then .[\"heroku-postbuild\"] = \"$build_command && \" + .[\"heroku-postbuild\"] else .[\"heroku-postbuild\"] = \"$build_command\" end" >$build_dir/package.json
+fi
 
 exit 0
