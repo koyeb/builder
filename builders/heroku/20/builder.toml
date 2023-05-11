@@ -17,10 +17,6 @@ description = "Base builder for Heroku-20 stack, based on ubuntu:20.04 base imag
   uri = "https://cnb-shim.herokuapp.com/v1/heroku/scala?version=0.0.0&name=Scala"
 
 [[buildpacks]]
-  id = "heroku/java-function"
-  uri = "docker://public.ecr.aws/heroku-buildpacks/heroku-java-function-buildpack@sha256:b4750feb3b738786cdbee31146ea9bfb2b63ab124dca2f1605c2ec79ab11e05c"
-
-[[buildpacks]]
   id = "heroku/gradle"
   uri = "https://cnb-shim.herokuapp.com/v1/heroku/gradle?version=0.0.0&name=Gradle"
 
@@ -46,11 +42,7 @@ description = "Base builder for Heroku-20 stack, based on ubuntu:20.04 base imag
 
 [[buildpacks]]
   id = "heroku/nodejs"
-  uri = "docker://public.ecr.aws/heroku-buildpacks/heroku-nodejs-buildpack@sha256:25f22a506c1b8fbad0dcd4232d96f1e8dd3194c4b9ece6ce61b56cf0a494958f"
-
-[[buildpacks]]
-  id = "heroku/nodejs-function"
-  uri = "docker://public.ecr.aws/heroku-buildpacks/heroku-nodejs-function-buildpack@sha256:8402c9b463dd7042b0f09bb89bd181f5b40db6ab07fd2838cc9a629767e9c1fd"
+  uri = "docker://public.ecr.aws/heroku-buildpacks/heroku-nodejs-buildpack@sha256:e124fd4dcd60460ab8588c1ce0fc07fb07b84b4100d6f03d34daa2ffea097ce8"
 
 [[buildpacks]]
   id = "heroku/clojure"
@@ -147,35 +139,13 @@ description = "Base builder for Heroku-20 stack, based on ubuntu:20.04 base imag
 [[order]]
 
   [[order.group]]
-    id = "heroku/nodejs-function"
-    version = "0.10.3"
-
-  [[order.group]]
-    id = "koyeb/custom"
-    version = "0.1.0"
-    optional = true
-
-[[order]]
-
-  [[order.group]]
-    id = "heroku/java-function"
-    version = "0.3.43"
-
-  [[order.group]]
-    id = "koyeb/custom"
-    version = "0.1.0"
-    optional = true
-
-[[order]]
-
-  [[order.group]]
     id = "koyeb/custom-nodejs"
     version = "0.1.0"
     optional = true
 
   [[order.group]]
     id = "heroku/nodejs"
-    version = "0.6.3"
+    version = "0.6.4"
 
 [[order]]
 
