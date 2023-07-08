@@ -42,7 +42,7 @@ description = "Base builder for Heroku-20 stack, based on ubuntu:20.04 base imag
 
 [[buildpacks]]
   id = "heroku/nodejs"
-  uri = "docker://docker.io/heroku/buildpack-nodejs@sha256:370b3b537642fa35553298ea61119e85fd1ecd6153009611a2fc4d784b26fb92"
+  uri = "docker://docker.io/heroku/buildpack-nodejs@sha256:e6f38bb7833677c4530c5b06de9cda5da9aac7ead5772b980083e14614346742"
 
 [[buildpacks]]
   id = "heroku/clojure"
@@ -145,7 +145,7 @@ description = "Base builder for Heroku-20 stack, based on ubuntu:20.04 base imag
 
   [[order.group]]
     id = "heroku/nodejs"
-    version = "0.6.7"
+    version = "1.1.1"
 
 [[order]]
 
