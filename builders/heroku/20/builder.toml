@@ -10,7 +10,7 @@ description = "Base builder for Heroku-20 stack, based on ubuntu:20.04 base imag
 
 [[buildpacks]]
   id = "heroku/java"
-  uri = "docker://docker.io/heroku/buildpack-java@sha256:3c888077056f93d3ceb7c8a5b3dede3e2b06bfa169a8e3fc7383374b6773265a"
+  uri = "docker://docker.io/heroku/buildpack-java@sha256:43cc23409922c6b3af6886bd810a350e44bec2c2eb52fc3bfd7851e7165f41b8"
 
 [[buildpacks]]
   id = "heroku/scala"
@@ -42,7 +42,7 @@ description = "Base builder for Heroku-20 stack, based on ubuntu:20.04 base imag
 
 [[buildpacks]]
   id = "heroku/nodejs"
-  uri = "docker://docker.io/heroku/buildpack-nodejs@sha256:e6f38bb7833677c4530c5b06de9cda5da9aac7ead5772b980083e14614346742"
+  uri = "docker://docker.io/heroku/buildpack-nodejs@sha256:e5519335d777a818929aa2050b4a8d0b73e9d31f3593779732631b3cf4c08f34"
 
 [[buildpacks]]
   id = "heroku/clojure"
@@ -145,13 +145,13 @@ description = "Base builder for Heroku-20 stack, based on ubuntu:20.04 base imag
 
   [[order.group]]
     id = "heroku/nodejs"
-    version = "1.1.1"
+    version = "1.1.3"
 
 [[order]]
 
   [[order.group]]
     id = "heroku/java"
-    version = "0.6.11"
+    version = "1.1.2"
 
   [[order.group]]
     id = "koyeb/custom"
@@ -162,7 +162,7 @@ description = "Base builder for Heroku-20 stack, based on ubuntu:20.04 base imag
 
   [[order.group]]
     id = "heroku/jvm"
-    version = "1.0.10"
+    version = "1.1.2"
 
   [[order.group]]
     id = "heroku/gradle"
