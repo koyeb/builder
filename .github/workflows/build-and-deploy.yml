@@ -50,6 +50,16 @@ jobs:
       - name: Build images
         run: |
           PACK_CMD=./pack make images
+          
+          # temporary force publich base image for develop branch
+          for version in 22; do
+            docker tag koyeb/pack:$version-cnb registry.prod.koyeb.com/koyeb/pack:$version-cnb
+            docker tag koyeb/pack:$version-cnb-build registry.prod.koyeb.com/koyeb/pack:$version-cnb-build
+            docker push koyeb/pack:$version-cnb
+            docker push koyeb/pack:$version-cnb-build
+            docker push registry.prod.koyeb.com/koyeb/pack:$version-cnb
+            docker push registry.prod.koyeb.com/koyeb/pack:$version-cnb-build
+          done
       - name: Publish images
         if: (github.event_name == 'repository_dispatch') || (github.event_name == 'push' && github.ref == 'refs/heads/main')
         run: |
