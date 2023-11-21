@@ -34,7 +34,7 @@ description = "Base builder for Heroku-22 stack, based on ubuntu:22.04 base imag
 
 [[buildpacks]]
   id = "heroku/ruby"
-  uri = "https://cnb-shim.herokuapp.com/v1/heroku/ruby?version=0.0.0&name=Ruby"
+  uri = "docker://docker.io/heroku/buildpack-ruby@sha256:b82d0a0d59dd97615fe082e4e31c3af25790dd88a0c5c6b8d553504f6b22526b"
 
 [[buildpacks]]
   id = "heroku/scala"
