@@ -45,7 +45,16 @@ function patch_heroku_clojure() {
 	echo $load | jq '.buildpacks |= . + [{"id": "heroku/clojure", "uri": "https://cnb-shim.herokuapp.com/v1/heroku/clojure?version=0.0.0&name=Clojure"}]' | jq '.order |= . + [{"group": [{"id": "heroku/clojure", "version": "0.0.0"}, {"id": "heroku/procfile", "version": "2.0.2", "optional": true}]}]' | yj -jt -i >$1
 }
 
+function patch_remove_eol() {
+	echo "patching remove eol"
+
+	load=$(cat $1 | yj -t)
+	echo $load | jq 'del(.buildpacks[] | select(.id == "heroku/builder-eol-warning"))' | yj -jt -i >$1
+	echo $load | jq 'del(.order[].group[] | select(.id == "heroku/builder-eol-warning"))' | yj -jt -i >$1
+}
+
 patch_lifecycle_version $1
 patch_koyeb_images $1
 patch_heroku_clojure $1
 patch_koyeb_custom $1
+patch_remove_eol $1
