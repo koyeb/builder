@@ -16,7 +16,7 @@ function patch_koyeb_images() {
 function patch_lifecycle_version() {
 	echo "patching lifecycle version"
 	load=$(cat $1 | yj -t)
-	echo $load | jq '.lifecycle["version"] = "0.15.3"' | yj -jt -i >$1
+	echo $load | jq '.lifecycle["version"] = "0.17.2"' | yj -jt -i >$1
 }
 
 function patch_koyeb_custom() {
