@@ -6,7 +6,7 @@ description = "Base builder for Heroku-22 stack, based on ubuntu:22.04 base imag
   run-image = "koyeb/pack:22-cnb"
 
 [lifecycle]
-  version = "0.17.2"
+  version = "0.15.3"
 
 [[buildpacks]]
   id = "heroku/go"

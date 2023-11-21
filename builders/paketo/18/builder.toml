@@ -53,7 +53,7 @@ description = "Ubuntu bionic base image with buildpacks for Java, .NET Core, Nod
   uri = "https://cnb-shim.herokuapp.com/v1/heroku/clojure?version=0.0.0&name=Clojure"
 
 [lifecycle]
-  version = "0.17.2"
+  version = "0.15.3"
 
 [[order]]
 
