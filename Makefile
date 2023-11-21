@@ -3,8 +3,6 @@ PACK_BUILD_FLAGS?=--trust-builder
 PACK_CMD?=pack
 REGISTRY?=koyeb
 
-clean: clean-linux
-
 ####################
 ## Linux
 ####################
@@ -40,10 +38,7 @@ build-paketo-18: build-root
 	@echo "> Building 'paketo-18' builder..."
 	$(PACK_CMD) builder create koyeb/builder:paketo-18 --config $(SAMPLES_ROOT)/builders/paketo/18/builder.toml $(PACK_FLAGS)
 
-clean-linux:
-	@echo "> Removing builders..."
-	docker rmi koyeb/builder:paketo-18 || true
-
+clean:
 	@echo "> Removing '.tmp'"
 	rm -rf .tmp
 
