@@ -32,16 +32,6 @@ function patch_koyeb_custom() {
 	echo $load | jq '.buildpacks |= . + [{"id": "koyeb/custom", "uri": "docker://koyeb/buildpack-custom"}, {"id": "koyeb/custom-nodejs", "uri": "docker://koyeb/buildpack-custom-nodejs"}]' | jq '.order[].group |= if .[0].id == "heroku/nodejs" then [{"id": "koyeb/custom-nodejs", "version": "0.1.0", "optional": true}] + . else . + [{"id": "koyeb/custom", "version": "0.1.0", "optional": true}] end' | yj -jt -i >$1
 }
 
-function patch_heroku_ruby() {
-	echo "patching heroku ruby"
-	load=$(cat $1 | yj -t)
-	id="heroku/ruby"
-	new="heroku/ruby"
-	version="0.0.0"
-	image="https://cnb-shim.herokuapp.com/v1/heroku/ruby?version=0.0.0&name=Ruby"
-	echo $load | jq '.buildpacks[] |= if .id == $id then .uri=$image else . end' --arg image "$image" --arg id "$id" | jq '.buildpacks[] |= if .id == $id then .id=$new else . end' --arg id "$id" --arg new $new | jq '.order[].group |= if .[0].id == $id then .[0]={"id":$new,"version":$version} else . end' --arg id "$id" --arg new $new --arg version "$version" | yj -jt -i >$1
-}
-
 function patch_heroku_clojure() {
 	echo "patching add clojure"
 	out=$(grep -c 'heroku/clojure' $1)
@@ -58,5 +48,4 @@ function patch_heroku_clojure() {
 patch_lifecycle_version $1
 patch_koyeb_images $1
 patch_heroku_clojure $1
-patch_heroku_ruby $1
 patch_koyeb_custom $1
