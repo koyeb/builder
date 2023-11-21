@@ -98,4 +98,4 @@ jobs:
             docker push registry.prod.koyeb.com/koyeb/builder:$tag
           done
       - name: Clean up
-        run: make clean-linux
+        run: make clean
