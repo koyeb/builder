@@ -75,19 +75,19 @@ jobs:
       - name: Publish beta buildpack
         if: (github.event_name == 'push' && github.ref == 'refs/heads/develop')
         run: |
-          # publish builder heroku-20
-          docker tag koyeb/builder:heroku-20 koyeb/builder:beta-20
-          docker tag registry.prod.koyeb.com/koyeb/builder:heroku-20 registry.prod.koyeb.com/koyeb/builder:beta-20
+          # publish builder heroku-20 and flag as beta
+          docker tag koyeb/builder:heroku-20 koyeb/builder:beta
+          docker tag registry.prod.koyeb.com/koyeb/builder:heroku-20 registry.prod.koyeb.com/koyeb/builder:beta
           # publish builder heroku-22
-          docker tag koyeb/builder:heroku-22 koyeb/builder:beta
-          docker tag registry.prod.koyeb.com/koyeb/builder:heroku-22 registry.prod.koyeb.com/koyeb/builder:beta
+          docker tag koyeb/builder:heroku-22 koyeb/builder:beta-22
+          docker tag registry.prod.koyeb.com/koyeb/builder:heroku-22 registry.prod.koyeb.com/koyeb/builder:beta-22
 
           docker push koyeb/builder:beta
           docker push registry.prod.koyeb.com/koyeb/builder:beta
       - name: Publish buildpack
         if: (github.event_name == 'repository_dispatch') || (github.event_name == 'push' && github.ref == 'refs/heads/main')
         run: |
-          # publish builder
+          # publish builder heroku 20 is the default
           docker tag koyeb/builder:heroku-20 koyeb/builder:latest
           docker tag koyeb/builder:heroku-20 koyeb/builder:heroku
           docker tag registry.prod.koyeb.com/koyeb/builder:heroku-20 registry.prod.koyeb.com/koyeb/builder:latest
