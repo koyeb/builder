@@ -9,40 +9,44 @@ description = "Base builder for Heroku-20 stack, based on ubuntu:20.04 base imag
   version = "0.15.3"
 
 [[buildpacks]]
-  id = "heroku/java"
-  uri = "docker://docker.io/heroku/buildpack-java@sha256:7e4a2bc5f80e6892949117e3ae48ecac0b54760058999c48a5907a56268949fe"
+  id = "heroku/builder-eol-warning"
+  uri = "./end-of-life-buildpack/"
 
 [[buildpacks]]
-  id = "heroku/scala"
-  uri = "https://cnb-shim.herokuapp.com/v1/heroku/scala?version=0.0.0&name=Scala"
+  id = "heroku/go"
+  uri = "https://cnb-shim.herokuapp.com/v1/heroku/go?version=0.0.0&name=Heroku+Go+(Shimmed)"
 
 [[buildpacks]]
   id = "heroku/gradle"
-  uri = "https://cnb-shim.herokuapp.com/v1/heroku/gradle?version=0.0.0&name=Gradle"
+  uri = "https://cnb-shim.herokuapp.com/v1/heroku/gradle?version=0.0.0&name=Heroku+Gradle+(Shimmed)"
+
+[[buildpacks]]
+  id = "heroku/java"
+  uri = "docker://docker.io/heroku/buildpack-java@sha256:afaf284205f547c4453968f9872b5d44d94154680d4799648816681597b742f3"
+
+[[buildpacks]]
+  id = "heroku/nodejs"
+  uri = "docker://docker.io/heroku/buildpack-nodejs@sha256:6d89fd44de926063537a0628c623bf27838af0bc0cc31d9ac017d2e81a67144c"
+
+[[buildpacks]]
+  id = "heroku/php"
+  uri = "https://cnb-shim.herokuapp.com/v1/heroku/php?version=0.0.0&name=Heroku+PHP+(Shimmed)"
+
+[[buildpacks]]
+  id = "heroku/procfile"
+  uri = "docker://docker.io/heroku/procfile-cnb@sha256:2549eee29b64c5dc063a3966c65baf1f264389645f54d416a320aa9e20b09592"
+
+[[buildpacks]]
+  id = "heroku/python"
+  uri = "https://cnb-shim.herokuapp.com/v1/heroku/python?version=0.0.0&name=Heroku+Python+(Shimmed)"
 
 [[buildpacks]]
   id = "heroku/ruby"
   uri = "https://cnb-shim.herokuapp.com/v1/heroku/ruby?version=0.0.0&name=Ruby"
 
 [[buildpacks]]
-  id = "heroku/procfile"
-  uri = "docker://docker.io/heroku/procfile-cnb@sha256:ea7219d4bb50196b4f292c9aae397b17255c59a243d7408535d2a03a5cd2b040"
-
-[[buildpacks]]
-  id = "heroku/python"
-  uri = "https://cnb-shim.herokuapp.com/v1/heroku/python?version=0.0.0&name=Python"
-
-[[buildpacks]]
-  id = "heroku/php"
-  uri = "https://cnb-shim.herokuapp.com/v1/heroku/php?version=0.0.0&name=PHP"
-
-[[buildpacks]]
-  id = "heroku/go"
-  uri = "https://cnb-shim.herokuapp.com/v1/heroku/go?version=0.0.0&name=Go"
-
-[[buildpacks]]
-  id = "heroku/nodejs"
-  uri = "docker://docker.io/heroku/buildpack-nodejs@sha256:94a5360759d28b86415a5c8e7f4602591154b97d51573eb3d353d84397c35602"
+  id = "heroku/scala"
+  uri = "https://cnb-shim.herokuapp.com/v1/heroku/scala?version=0.0.0&name=Heroku+Scala+(Shimmed)"
 
 [[buildpacks]]
   id = "heroku/clojure"
@@ -64,8 +68,12 @@ description = "Base builder for Heroku-20 stack, based on ubuntu:20.04 base imag
 
   [[order.group]]
     id = "heroku/procfile"
-    version = "2.0.1"
+    version = "2.0.2"
     optional = true
+
+  [[order.group]]
+    id = "heroku/builder-eol-warning"
+    version = "1.0.0"
 
   [[order.group]]
     id = "koyeb/custom"
@@ -80,8 +88,12 @@ description = "Base builder for Heroku-20 stack, based on ubuntu:20.04 base imag
 
   [[order.group]]
     id = "heroku/procfile"
-    version = "2.0.1"
+    version = "2.0.2"
     optional = true
+
+  [[order.group]]
+    id = "heroku/builder-eol-warning"
+    version = "1.0.0"
 
   [[order.group]]
     id = "koyeb/custom"
@@ -96,8 +108,12 @@ description = "Base builder for Heroku-20 stack, based on ubuntu:20.04 base imag
 
   [[order.group]]
     id = "heroku/procfile"
-    version = "2.0.1"
+    version = "2.0.2"
     optional = true
+
+  [[order.group]]
+    id = "heroku/builder-eol-warning"
+    version = "1.0.0"
 
   [[order.group]]
     id = "koyeb/custom"
@@ -112,8 +128,12 @@ description = "Base builder for Heroku-20 stack, based on ubuntu:20.04 base imag
 
   [[order.group]]
     id = "heroku/procfile"
-    version = "2.0.1"
+    version = "2.0.2"
     optional = true
+
+  [[order.group]]
+    id = "heroku/builder-eol-warning"
+    version = "1.0.0"
 
   [[order.group]]
     id = "koyeb/custom"
@@ -128,8 +148,12 @@ description = "Base builder for Heroku-20 stack, based on ubuntu:20.04 base imag
 
   [[order.group]]
     id = "heroku/procfile"
-    version = "2.0.1"
+    version = "2.0.2"
     optional = true
+
+  [[order.group]]
+    id = "heroku/builder-eol-warning"
+    version = "1.0.0"
 
   [[order.group]]
     id = "koyeb/custom"
@@ -145,33 +169,31 @@ description = "Base builder for Heroku-20 stack, based on ubuntu:20.04 base imag
 
   [[order.group]]
     id = "heroku/nodejs"
-    version = "1.1.4"
+    version = "2.3.0"
+
+  [[order.group]]
+    id = "heroku/procfile"
+    version = "2.0.2"
+    optional = true
+
+  [[order.group]]
+    id = "heroku/builder-eol-warning"
+    version = "1.0.0"
 
 [[order]]
 
   [[order.group]]
     id = "heroku/java"
-    version = "3.0.0"
-
-  [[order.group]]
-    id = "koyeb/custom"
-    version = "0.1.0"
-    optional = true
-
-[[order]]
-
-  [[order.group]]
-    id = "heroku/jvm"
-    version = "3.0.0"
-
-  [[order.group]]
-    id = "heroku/gradle"
-    version = "0.0.0"
+    version = "4.0.0"
 
   [[order.group]]
     id = "heroku/procfile"
-    version = "2.0.1"
+    version = "2.0.2"
     optional = true
+
+  [[order.group]]
+    id = "heroku/builder-eol-warning"
+    version = "1.0.0"
 
   [[order.group]]
     id = "koyeb/custom"
