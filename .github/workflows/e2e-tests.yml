@@ -35,4 +35,4 @@ jobs:
       - name: "Cleanup ${{matrix.repo}}"
         uses: koyeb/action-git-deploy/cleanup@v1
         with:
-          app-name: '${{matrix.repo}}-${{ github.head_ref }}'
+          app-name: '${{matrix.repo}}-${{ github.ref_name }}'
