@@ -49,7 +49,10 @@ function patch_remove_eol() {
 	echo "patching remove eol"
 
 	load=$(cat $1 | yj -t)
+	echo $load | jq '.description = "Koyeb buildpack based on heroku buildpack"' | yj -jt -i >$1
+	load=$(cat $1 | yj -t)
 	echo $load | jq 'del(.buildpacks[] | select(.id == "heroku/builder-eol-warning"))' | yj -jt -i >$1
+	load=$(cat $1 | yj -t)
 	echo $load | jq 'del(.order[].group[] | select(.id == "heroku/builder-eol-warning"))' | yj -jt -i >$1
 }
 
