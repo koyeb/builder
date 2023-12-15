@@ -19,6 +19,7 @@ jobs:
             port: 5000
           - repo: example-django
             port: 8000
+            env: DJANGO_ALLOWED_HOSTS=.koyeb.app
           - repo: example-flask
             port: 8000
           - repo: example-go-gin
@@ -40,6 +41,8 @@ jobs:
           service-ports: "${{matrix.port}}:http"
           service-routes: "/:${{matrix.port}}"
           service-checks: "${{matrix.port}}:http:/"
+          service-env: "${{matrix.env}}"
+
 
       - name: "Cleanup ${{matrix.repo}}"
         uses: koyeb/action-git-deploy/cleanup@v1
