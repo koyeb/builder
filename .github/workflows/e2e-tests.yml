@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         repo: [example-nextjs, example-bun, example-django, example-flask, example-go-gin, example-rails]
-        port: 8000
+        port: [8000]
         include:
           - repo: example-nextjs
             port: 3000
