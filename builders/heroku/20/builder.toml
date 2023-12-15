@@ -1,4 +1,4 @@
-description = "Base builder for Heroku-20 stack, based on ubuntu:20.04 base image"
+description = "Koyeb buildpack based on heroku buildpack"
 
 [stack]
   id = "heroku-20"
@@ -18,11 +18,11 @@ description = "Base builder for Heroku-20 stack, based on ubuntu:20.04 base imag
 
 [[buildpacks]]
   id = "heroku/java"
-  uri = "docker://docker.io/heroku/buildpack-java@sha256:afaf284205f547c4453968f9872b5d44d94154680d4799648816681597b742f3"
+  uri = "docker://docker.io/heroku/buildpack-java@sha256:7215ec11a198f04da57355043ef9e61a5af699fb96c8a320e22df1832ba275b4"
 
 [[buildpacks]]
   id = "heroku/nodejs"
-  uri = "docker://docker.io/heroku/buildpack-nodejs@sha256:6d89fd44de926063537a0628c623bf27838af0bc0cc31d9ac017d2e81a67144c"
+  uri = "docker://docker.io/heroku/buildpack-nodejs@sha256:fc6bfbf639d6051a8b37932ae61a793906504228d1a86a1561ceb3433a1c0af3"
 
 [[buildpacks]]
   id = "heroku/php"
@@ -145,7 +145,7 @@ description = "Base builder for Heroku-20 stack, based on ubuntu:20.04 base imag
 
   [[order.group]]
     id = "heroku/nodejs"
-    version = "2.3.0"
+    version = "2.6.1"
 
   [[order.group]]
     id = "heroku/procfile"
@@ -156,7 +156,7 @@ description = "Base builder for Heroku-20 stack, based on ubuntu:20.04 base imag
 
   [[order.group]]
     id = "heroku/java"
-    version = "4.0.0"
+    version = "4.0.2"
 
   [[order.group]]
     id = "heroku/procfile"

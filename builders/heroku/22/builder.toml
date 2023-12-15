@@ -1,4 +1,4 @@
-description = "Base builder for Heroku-22 stack, based on ubuntu:22.04 base image"
+description = "Koyeb buildpack based on heroku buildpack"
 
 [stack]
   id = "heroku-22"

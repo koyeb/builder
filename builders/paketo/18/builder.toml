@@ -1,4 +1,4 @@
-description = "Ubuntu bionic base image with buildpacks for Java, .NET Core, NodeJS, Go, Python, PHP, Ruby, Apache HTTPD, NGINX and Procfile"
+description = "Koyeb buildpack based on heroku buildpack"
 
 [[buildpacks]]
   uri = "docker://gcr.io/paketo-buildpacks/dotnet-core:0.9.0"
