@@ -30,6 +30,7 @@ jobs:
           app-name: "${{ matrix.repo }}-${{ github.ref_name }}"
           service-ports: "${{matrix.port}}:http"
           service-routes: "/:${{matrix.port}}"
+          service-checks: "${{matrix.port}}:http:/"
 
       - name: "Cleanup ${{matrix.repo}}"
         uses: koyeb/action-git-deploy/cleanup@v1
