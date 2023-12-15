@@ -26,6 +26,7 @@ jobs:
         with:
           api_token: "${{ secrets.KOYEB_STAGING_API_TOKEN }}"
           api_url: "${{ secrets.KOYEB_API_URL }}"
+          github_token: "${{ secrets.GITHUB_TOKEN }}"
 
       - name: "Build ${{matrix.repo}}"
         uses: koyeb/action-git-deploy@v1
