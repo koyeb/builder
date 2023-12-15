@@ -26,6 +26,7 @@ jobs:
         uses: koyeb/action-git-deploy@v1
         with:
           git-url: "github.com/koyeb/${{matrix.repo}}"
+          git-branch: main
           app-name: "${{ matrix.repo }}-${{ github.ref_name }}"
           service-ports: "${{matrix.port}}:http"
           service-routes: "/:${{matrix.port}}"
