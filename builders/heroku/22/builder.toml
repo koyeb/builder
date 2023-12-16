@@ -1,20 +1,16 @@
 description = "Koyeb buildpack based on heroku buildpack"
 
 [stack]
-  id = "heroku-20"
-  build-image = "koyeb/pack:20-cnb-build"
-  run-image = "koyeb/pack:20-cnb"
+  id = "heroku-22"
+  build-image = "koyeb/pack:22-cnb-build"
+  run-image = "koyeb/pack:22-cnb"
 
 [lifecycle]
   version = "0.15.3"
 
 [[buildpacks]]
   id = "heroku/go"
-  uri = "https://cnb-shim.herokuapp.com/v1/heroku/go?version=0.0.0&name=Heroku+Go+(Shimmed)"
-
-[[buildpacks]]
-  id = "heroku/gradle"
-  uri = "https://cnb-shim.herokuapp.com/v1/heroku/gradle?version=0.0.0&name=Heroku+Gradle+(Shimmed)"
+  uri = "docker://docker.io/heroku/buildpack-go@sha256:f85f305d0a8a4c5bab8083897a9b530d99dcfceeba2705c858788a1b16343a18"
 
 [[buildpacks]]
   id = "heroku/java"
@@ -26,7 +22,7 @@ description = "Koyeb buildpack based on heroku buildpack"
 
 [[buildpacks]]
   id = "heroku/php"
-  uri = "https://cnb-shim.herokuapp.com/v1/heroku/php?version=0.0.0&name=Heroku+PHP+(Shimmed)"
+  uri = "docker://docker.io/heroku/buildpack-php@sha256:9d76792ba9869eb96ba3b41b0bfb48c6adfaa58a361bba6083505c84c5a8d61e"
 
 [[buildpacks]]
   id = "heroku/procfile"
@@ -34,15 +30,15 @@ description = "Koyeb buildpack based on heroku buildpack"
 
 [[buildpacks]]
   id = "heroku/python"
-  uri = "https://cnb-shim.herokuapp.com/v1/heroku/python?version=0.0.0&name=Heroku+Python+(Shimmed)"
+  uri = "docker://docker.io/heroku/buildpack-python@sha256:5785d433616f0b72d7ceb576896d5e288fe59b7271169fa09feee3d0cd448444"
 
 [[buildpacks]]
   id = "heroku/ruby"
-  uri = "https://cnb-shim.herokuapp.com/v1/heroku/ruby?version=0.0.0&name=Heroku+Ruby+(Shimmed)"
+  uri = "docker://docker.io/heroku/buildpack-ruby@sha256:b82d0a0d59dd97615fe082e4e31c3af25790dd88a0c5c6b8d553504f6b22526b"
 
 [[buildpacks]]
   id = "heroku/scala"
-  uri = "https://cnb-shim.herokuapp.com/v1/heroku/scala?version=0.0.0&name=Heroku+Scala+(Shimmed)"
+  uri = "docker://docker.io/heroku/buildpack-scala@sha256:f5c6608a0f81058872eabe4d4829e80650d7388a59b6c3bf866d38ab7111eabe"
 
 [[buildpacks]]
   id = "heroku/clojure"
@@ -59,24 +55,8 @@ description = "Koyeb buildpack based on heroku buildpack"
 [[order]]
 
   [[order.group]]
-    id = "heroku/ruby"
-    version = "0.0.0"
-
-  [[order.group]]
-    id = "heroku/procfile"
-    version = "2.0.2"
-    optional = true
-
-  [[order.group]]
-    id = "koyeb/custom"
-    version = "0.1.0"
-    optional = true
-
-[[order]]
-
-  [[order.group]]
     id = "heroku/python"
-    version = "0.0.0"
+    version = "0.8.0"
 
   [[order.group]]
     id = "heroku/procfile"
@@ -91,40 +71,23 @@ description = "Koyeb buildpack based on heroku buildpack"
 [[order]]
 
   [[order.group]]
-    id = "heroku/scala"
-    version = "0.0.0"
-
-  [[order.group]]
-    id = "heroku/procfile"
-    version = "2.0.2"
+    id = "heroku/nodejs-engine"
+    version = "2.6.1"
     optional = true
 
   [[order.group]]
-    id = "koyeb/custom"
-    version = "0.1.0"
-    optional = true
-
-[[order]]
-
-  [[order.group]]
-    id = "heroku/php"
-    version = "0.0.0"
-
-  [[order.group]]
-    id = "heroku/procfile"
-    version = "2.0.2"
+    id = "heroku/nodejs-yarn"
+    version = "2.6.1"
     optional = true
 
   [[order.group]]
-    id = "koyeb/custom"
-    version = "0.1.0"
+    id = "heroku/jvm"
+    version = "4.0.2"
     optional = true
 
-[[order]]
-
   [[order.group]]
-    id = "heroku/go"
-    version = "0.0.0"
+    id = "heroku/ruby"
+    version = "2.1.2"
 
   [[order.group]]
     id = "heroku/procfile"
@@ -157,6 +120,54 @@ description = "Koyeb buildpack based on heroku buildpack"
   [[order.group]]
     id = "heroku/java"
     version = "4.0.2"
+
+  [[order.group]]
+    id = "heroku/procfile"
+    version = "2.0.2"
+    optional = true
+
+  [[order.group]]
+    id = "koyeb/custom"
+    version = "0.1.0"
+    optional = true
+
+[[order]]
+
+  [[order.group]]
+    id = "heroku/scala"
+    version = "4.0.2"
+
+  [[order.group]]
+    id = "heroku/procfile"
+    version = "2.0.2"
+    optional = true
+
+  [[order.group]]
+    id = "koyeb/custom"
+    version = "0.1.0"
+    optional = true
+
+[[order]]
+
+  [[order.group]]
+    id = "heroku/go"
+    version = "0.1.12"
+
+  [[order.group]]
+    id = "heroku/procfile"
+    version = "2.0.2"
+    optional = true
+
+  [[order.group]]
+    id = "koyeb/custom"
+    version = "0.1.0"
+    optional = true
+
+[[order]]
+
+  [[order.group]]
+    id = "heroku/php"
+    version = "0.1.2"
 
   [[order.group]]
     id = "heroku/procfile"

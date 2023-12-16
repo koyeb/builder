@@ -1,0 +1,59 @@
+name: E2E tests
+
+on:
+  schedule:
+    - cron: "9 10 * * *"
+  workflow_dispatch:
+  workflow_run:
+    workflows: ["Build and Deploy"]
+    types:
+      - completed
+
+
+jobs:
+  test:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        repo: [example-nextjs, example-django, example-flask, example-go-gin, example-rails, example-laravel]
+        include:
+          - repo: example-nextjs
+            port: 3000
+          - repo: example-rails
+            port: 5000
+          - repo: example-django
+            port: 8000
+            checks: "tcp"
+          - repo: example-flask
+            port: 8000
+          - repo: example-go-gin
+            port: 8000
+          - repo: example-laravel
+            port: 8000
+            checks: "tcp"
+    steps:
+      - name: Install and configure the Koyeb CLI
+        uses: koyeb-community/install-koyeb-cli@v2
+        with:
+          api_token: "${{ secrets.KOYEB_STAGING_API_TOKEN }}"
+          api_url: "${{ secrets.KOYEB_API_URL }}"
+          github_token: "${{ secrets.GITHUB_TOKEN }}"
+
+      - name: "Build ${{matrix.repo}}"
+        uses: koyeb/action-git-deploy@v1
+        with:
+          git-url: "github.com/koyeb/${{matrix.repo}}"
+          git-branch: main
+          app-name: "${{ matrix.repo }}-${{ github.ref_name }}"
+          service-ports: "${{matrix.port}}:http"
+          service-routes: "/:${{matrix.port}}"
+          service-checks: "${{matrix.port}}:${{matrix.checks != '' && matrix.checks || 'http:/'}}"
+          service-env: "${{matrix.env}}"
+
+
+      - name: "Cleanup ${{matrix.repo}}"
+        uses: koyeb/action-git-deploy/cleanup@v1
+        with:
+          app-name: '${{matrix.repo}}-${{ github.ref_name }}'
