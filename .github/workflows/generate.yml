@@ -12,7 +12,7 @@ jobs:
       - name: Clone
         uses: actions/checkout@v2
         with:
-          ref: refs/heads/develop
+          ref: refs/heads/main
       - name: install yj
         run: |
           echo "Installing yj to /usr/local/bin"
