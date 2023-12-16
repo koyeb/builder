@@ -14,7 +14,6 @@ patch-builder-run-image:
 patch:
 	./patch.sh $(SAMPLES_ROOT)/builders/heroku/22/builder.toml
 	./patch.sh $(SAMPLES_ROOT)/builders/heroku/20/builder.toml
-	./patch.sh $(SAMPLES_ROOT)/builders/paketo/18/builder.toml
 
 images:
 	@docker build --pull -f Dockerfile.build --build-arg STACK=heroku-20 --build-arg BASE_IMAGE=heroku/heroku:20-build -t koyeb/pack:20-cnb-build .
@@ -31,12 +30,6 @@ build-heroku-22: build-root
 build-heroku-20: build-root
 	@echo "> Building 'heroku-20' builder..."
 	$(PACK_CMD) builder create ${REGISTRY}/builder:heroku-20 --config $(SAMPLES_ROOT)/builders/heroku/20/builder.toml $(PACK_FLAGS)
-
-build-paketo: build-paketo-18
-
-build-paketo-18: build-root
-	@echo "> Building 'paketo-18' builder..."
-	$(PACK_CMD) builder create koyeb/builder:paketo-18 --config $(SAMPLES_ROOT)/builders/paketo/18/builder.toml $(PACK_FLAGS)
 
 clean:
 	@echo "> Removing '.tmp'"
