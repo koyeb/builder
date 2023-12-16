@@ -1,4 +1,4 @@
-description = "Base builder for Heroku-22 stack, based on ubuntu:22.04 base image"
+description = "Koyeb buildpack based on heroku buildpack"
 
 [stack]
   id = "heroku-22"
@@ -14,11 +14,11 @@ description = "Base builder for Heroku-22 stack, based on ubuntu:22.04 base imag
 
 [[buildpacks]]
   id = "heroku/java"
-  uri = "docker://docker.io/heroku/buildpack-java@sha256:afaf284205f547c4453968f9872b5d44d94154680d4799648816681597b742f3"
+  uri = "docker://docker.io/heroku/buildpack-java@sha256:7215ec11a198f04da57355043ef9e61a5af699fb96c8a320e22df1832ba275b4"
 
 [[buildpacks]]
   id = "heroku/nodejs"
-  uri = "docker://docker.io/heroku/buildpack-nodejs@sha256:6d89fd44de926063537a0628c623bf27838af0bc0cc31d9ac017d2e81a67144c"
+  uri = "docker://docker.io/heroku/buildpack-nodejs@sha256:fc6bfbf639d6051a8b37932ae61a793906504228d1a86a1561ceb3433a1c0af3"
 
 [[buildpacks]]
   id = "heroku/php"
@@ -30,7 +30,7 @@ description = "Base builder for Heroku-22 stack, based on ubuntu:22.04 base imag
 
 [[buildpacks]]
   id = "heroku/python"
-  uri = "docker://docker.io/heroku/buildpack-python@sha256:b99ea12d35565b750ed422b606526158fde6888514eb35a364e332f5a46b82be"
+  uri = "docker://docker.io/heroku/buildpack-python@sha256:5785d433616f0b72d7ceb576896d5e288fe59b7271169fa09feee3d0cd448444"
 
 [[buildpacks]]
   id = "heroku/ruby"
@@ -38,7 +38,7 @@ description = "Base builder for Heroku-22 stack, based on ubuntu:22.04 base imag
 
 [[buildpacks]]
   id = "heroku/scala"
-  uri = "docker://docker.io/heroku/buildpack-scala@sha256:5ae9a74a8117d559f9b71d7c0b783fa23db8936bc8ffd3b4dccf02fc6ed1fa06"
+  uri = "docker://docker.io/heroku/buildpack-scala@sha256:f5c6608a0f81058872eabe4d4829e80650d7388a59b6c3bf866d38ab7111eabe"
 
 [[buildpacks]]
   id = "heroku/clojure"
@@ -56,7 +56,7 @@ description = "Base builder for Heroku-22 stack, based on ubuntu:22.04 base imag
 
   [[order.group]]
     id = "heroku/python"
-    version = "0.7.3"
+    version = "0.8.0"
 
   [[order.group]]
     id = "heroku/procfile"
@@ -72,17 +72,17 @@ description = "Base builder for Heroku-22 stack, based on ubuntu:22.04 base imag
 
   [[order.group]]
     id = "heroku/nodejs-engine"
-    version = "2.3.0"
+    version = "2.6.1"
     optional = true
 
   [[order.group]]
     id = "heroku/nodejs-yarn"
-    version = "2.3.0"
+    version = "2.6.1"
     optional = true
 
   [[order.group]]
     id = "heroku/jvm"
-    version = "4.0.0"
+    version = "4.0.2"
     optional = true
 
   [[order.group]]
@@ -108,7 +108,7 @@ description = "Base builder for Heroku-22 stack, based on ubuntu:22.04 base imag
 
   [[order.group]]
     id = "heroku/nodejs"
-    version = "2.3.0"
+    version = "2.6.1"
 
   [[order.group]]
     id = "heroku/procfile"
@@ -119,7 +119,7 @@ description = "Base builder for Heroku-22 stack, based on ubuntu:22.04 base imag
 
   [[order.group]]
     id = "heroku/java"
-    version = "4.0.0"
+    version = "4.0.2"
 
   [[order.group]]
     id = "heroku/procfile"
@@ -135,7 +135,7 @@ description = "Base builder for Heroku-22 stack, based on ubuntu:22.04 base imag
 
   [[order.group]]
     id = "heroku/scala"
-    version = "4.0.0"
+    version = "4.0.2"
 
   [[order.group]]
     id = "heroku/procfile"
