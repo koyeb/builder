@@ -18,6 +18,10 @@ jobs:
           echo "Installing yj to /usr/local/bin"
           wget https://github.com/sclevine/yj/releases/download/v5.0.0/yj-linux -O /usr/local/bin/yj
           chmod a+x /usr/local/bin/yj
+      - name: Enable Pull Request Automerge
+        run: gh pr merge --merge --auto "1"
+        env:
+          GH_TOKEN: ${{ secrets.PAT }}
       - name: Checkout heroku buildpacks
         uses: actions/checkout@v2
         with:
