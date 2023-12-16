@@ -25,13 +25,14 @@ jobs:
             port: 5000
           - repo: example-django
             port: 8000
-            env: DJANGO_ALLOWED_HOSTS=.koyeb.app
+            checks: "tcp"
           - repo: example-flask
             port: 8000
           - repo: example-go-gin
             port: 8000
           - repo: example-laravel
             port: 8000
+            checks: "tcp"
     steps:
       - name: Install and configure the Koyeb CLI
         uses: koyeb-community/install-koyeb-cli@v2
@@ -48,7 +49,7 @@ jobs:
           app-name: "${{ matrix.repo }}-${{ github.ref_name }}"
           service-ports: "${{matrix.port}}:http"
           service-routes: "/:${{matrix.port}}"
-          service-checks: "${{matrix.port}}:http:/"
+          service-checks: "${{matrix.port}}:${{matrix.checks != '' && matrix.checks || 'http:/'}}"
           service-env: "${{matrix.env}}"
 
 
