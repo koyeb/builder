@@ -11,7 +11,7 @@ jobs:
 
     strategy:
       matrix:
-        repo: [example-nextjs, example-django, example-flask, example-go-gin, example-rails]
+        repo: [example-nextjs, example-django, example-flask, example-go-gin, example-rails, example-laravel]
         include:
           - repo: example-nextjs
             port: 3000
@@ -23,6 +23,8 @@ jobs:
           - repo: example-flask
             port: 8000
           - repo: example-go-gin
+            port: 8000
+          - repo: example-laravel
             port: 8000
     steps:
       - name: Install and configure the Koyeb CLI
