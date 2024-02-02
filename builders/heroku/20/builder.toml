@@ -18,11 +18,11 @@ description = "Koyeb buildpack based on heroku buildpack"
 
 [[buildpacks]]
   id = "heroku/java"
-  uri = "docker://docker.io/heroku/buildpack-java@sha256:7215ec11a198f04da57355043ef9e61a5af699fb96c8a320e22df1832ba275b4"
+  uri = "docker://docker.io/heroku/buildpack-java@sha256:20b9b71a87e94e82d2e3a54e9329af49bce93d61211e4169cfe7b490972cf8d0"
 
 [[buildpacks]]
   id = "heroku/nodejs"
-  uri = "docker://docker.io/heroku/buildpack-nodejs@sha256:a75fc423f279ff3de37dc3b55cc4bad19b53e19c7315e8b16400c94dbf55540c"
+  uri = "docker://docker.io/heroku/buildpack-nodejs@sha256:adeffc67d226f1d36c9ac0766a189a34efbfe3bd62c1bc07aa9a24c785fe4f70"
 
 [[buildpacks]]
   id = "heroku/php"
@@ -145,7 +145,7 @@ description = "Koyeb buildpack based on heroku buildpack"
 
   [[order.group]]
     id = "heroku/nodejs"
-    version = "2.6.4"
+    version = "2.6.5"
 
   [[order.group]]
     id = "heroku/procfile"
@@ -156,7 +156,7 @@ description = "Koyeb buildpack based on heroku buildpack"
 
   [[order.group]]
     id = "heroku/java"
-    version = "4.0.2"
+    version = "4.1.0"
 
   [[order.group]]
     id = "heroku/procfile"
