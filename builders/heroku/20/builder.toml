@@ -22,7 +22,7 @@ description = "Koyeb buildpack based on heroku buildpack"
 
 [[buildpacks]]
   id = "heroku/nodejs"
-  uri = "docker://docker.io/heroku/buildpack-nodejs@sha256:adeffc67d226f1d36c9ac0766a189a34efbfe3bd62c1bc07aa9a24c785fe4f70"
+  uri = "docker://docker.io/heroku/buildpack-nodejs@sha256:643a4e4b95099b80f42e06fbdbbfb54b79c53989109510990a6085e41dd3862e"
 
 [[buildpacks]]
   id = "heroku/php"
@@ -30,7 +30,7 @@ description = "Koyeb buildpack based on heroku buildpack"
 
 [[buildpacks]]
   id = "heroku/procfile"
-  uri = "docker://docker.io/heroku/procfile-cnb@sha256:2549eee29b64c5dc063a3966c65baf1f264389645f54d416a320aa9e20b09592"
+  uri = "docker://docker.io/heroku/buildpack-procfile@sha256:2549eee29b64c5dc063a3966c65baf1f264389645f54d416a320aa9e20b09592"
 
 [[buildpacks]]
   id = "heroku/python"
@@ -139,17 +139,17 @@ description = "Koyeb buildpack based on heroku buildpack"
 [[order]]
 
   [[order.group]]
-    id = "koyeb/custom-nodejs"
-    version = "0.1.0"
-    optional = true
-
-  [[order.group]]
     id = "heroku/nodejs"
-    version = "2.6.5"
+    version = "3.0.1"
 
   [[order.group]]
     id = "heroku/procfile"
     version = "2.0.2"
+    optional = true
+
+  [[order.group]]
+    id = "koyeb/custom"
+    version = "0.1.0"
     optional = true
 
 [[order]]

@@ -10,7 +10,7 @@ description = "Koyeb buildpack based on heroku buildpack"
 
 [[buildpacks]]
   id = "heroku/go"
-  uri = "docker://docker.io/heroku/buildpack-go@sha256:ab0e16dbcec105af6173f8422a190b48fe6b89a324e5e7f027ec4d5eb432d3de"
+  uri = "docker://docker.io/heroku/buildpack-go@sha256:8123cbeefc05f54c0f4b386bccdc78710d55bc500a99d6b75afd0680d537e016"
 
 [[buildpacks]]
   id = "heroku/java"
@@ -18,7 +18,7 @@ description = "Koyeb buildpack based on heroku buildpack"
 
 [[buildpacks]]
   id = "heroku/nodejs"
-  uri = "docker://docker.io/heroku/buildpack-nodejs@sha256:adeffc67d226f1d36c9ac0766a189a34efbfe3bd62c1bc07aa9a24c785fe4f70"
+  uri = "docker://docker.io/heroku/buildpack-nodejs@sha256:643a4e4b95099b80f42e06fbdbbfb54b79c53989109510990a6085e41dd3862e"
 
 [[buildpacks]]
   id = "heroku/php"
@@ -26,15 +26,15 @@ description = "Koyeb buildpack based on heroku buildpack"
 
 [[buildpacks]]
   id = "heroku/procfile"
-  uri = "docker://docker.io/heroku/procfile-cnb@sha256:2549eee29b64c5dc063a3966c65baf1f264389645f54d416a320aa9e20b09592"
+  uri = "docker://docker.io/heroku/buildpack-procfile@sha256:1995d5e70d12b928172a09b11ab7b0c07da7857588e743b0e55d4be0d1a59fbf"
 
 [[buildpacks]]
   id = "heroku/python"
-  uri = "docker://docker.io/heroku/buildpack-python@sha256:86561a5b5ed7ea378068c0adb30d117239f5cee2c521fdece8a05430b479ec1b"
+  uri = "docker://docker.io/heroku/buildpack-python@sha256:9c57ecaf8695d0dc9b3d2cd9d29384113cfbce26dd0ed31410ac680c4e01c62c"
 
 [[buildpacks]]
   id = "heroku/ruby"
-  uri = "docker://docker.io/heroku/buildpack-ruby@sha256:b82d0a0d59dd97615fe082e4e31c3af25790dd88a0c5c6b8d553504f6b22526b"
+  uri = "docker://docker.io/heroku/buildpack-ruby@sha256:995e2898a7a7fe1cb38ac24263d2f7d3fba1051ce170033320116a8aa81f9b21"
 
 [[buildpacks]]
   id = "heroku/scala"
@@ -56,11 +56,11 @@ description = "Koyeb buildpack based on heroku buildpack"
 
   [[order.group]]
     id = "heroku/python"
-    version = "0.8.1"
+    version = "0.8.3"
 
   [[order.group]]
     id = "heroku/procfile"
-    version = "2.0.2"
+    version = "3.0.1"
     optional = true
 
   [[order.group]]
@@ -72,12 +72,12 @@ description = "Koyeb buildpack based on heroku buildpack"
 
   [[order.group]]
     id = "heroku/nodejs-engine"
-    version = "2.6.5"
+    version = "3.0.1"
     optional = true
 
   [[order.group]]
     id = "heroku/nodejs-yarn"
-    version = "2.6.5"
+    version = "3.0.1"
     optional = true
 
   [[order.group]]
@@ -87,11 +87,11 @@ description = "Koyeb buildpack based on heroku buildpack"
 
   [[order.group]]
     id = "heroku/ruby"
-    version = "2.1.2"
+    version = "2.1.3"
 
   [[order.group]]
     id = "heroku/procfile"
-    version = "2.0.2"
+    version = "3.0.1"
     optional = true
 
   [[order.group]]
@@ -108,11 +108,11 @@ description = "Koyeb buildpack based on heroku buildpack"
 
   [[order.group]]
     id = "heroku/nodejs"
-    version = "2.6.5"
+    version = "3.0.1"
 
   [[order.group]]
     id = "heroku/procfile"
-    version = "2.0.2"
+    version = "3.0.1"
     optional = true
 
 [[order]]
@@ -123,7 +123,7 @@ description = "Koyeb buildpack based on heroku buildpack"
 
   [[order.group]]
     id = "heroku/procfile"
-    version = "2.0.2"
+    version = "3.0.1"
     optional = true
 
   [[order.group]]
@@ -139,7 +139,7 @@ description = "Koyeb buildpack based on heroku buildpack"
 
   [[order.group]]
     id = "heroku/procfile"
-    version = "2.0.2"
+    version = "3.0.1"
     optional = true
 
   [[order.group]]
@@ -151,11 +151,11 @@ description = "Koyeb buildpack based on heroku buildpack"
 
   [[order.group]]
     id = "heroku/go"
-    version = "0.1.14"
+    version = "0.2.0"
 
   [[order.group]]
     id = "heroku/procfile"
-    version = "2.0.2"
+    version = "3.0.1"
     optional = true
 
   [[order.group]]
@@ -171,7 +171,7 @@ description = "Koyeb buildpack based on heroku buildpack"
 
   [[order.group]]
     id = "heroku/procfile"
-    version = "2.0.2"
+    version = "3.0.1"
     optional = true
 
   [[order.group]]
