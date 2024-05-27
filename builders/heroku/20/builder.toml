@@ -6,7 +6,7 @@ description = "Koyeb buildpack based on heroku buildpack"
   run-image = "koyeb/pack:20-cnb"
 
 [lifecycle]
-  version = "0.15.3"
+  version = "0.17.5"
 
 [[buildpacks]]
   id = "heroku/go"
@@ -18,11 +18,11 @@ description = "Koyeb buildpack based on heroku buildpack"
 
 [[buildpacks]]
   id = "heroku/java"
-  uri = "docker://docker.io/heroku/buildpack-java@sha256:20b9b71a87e94e82d2e3a54e9329af49bce93d61211e4169cfe7b490972cf8d0"
+  uri = "docker://docker.io/heroku/buildpack-java@sha256:b8a2ececd099a9e566207ccb376ed63212a08d2598c574992eba7b0e6782a9f0"
 
 [[buildpacks]]
   id = "heroku/nodejs"
-  uri = "docker://docker.io/heroku/buildpack-nodejs@sha256:adeffc67d226f1d36c9ac0766a189a34efbfe3bd62c1bc07aa9a24c785fe4f70"
+  uri = "docker://docker.io/heroku/buildpack-nodejs@sha256:baea2da923e39ac90f308ccea96ac174b056fd27eff7ddca67d60363b55f8f61"
 
 [[buildpacks]]
   id = "heroku/php"
@@ -64,7 +64,7 @@ description = "Koyeb buildpack based on heroku buildpack"
 
   [[order.group]]
     id = "heroku/procfile"
-    version = "2.0.2"
+    version = "3.1.1"
     optional = true
 
   [[order.group]]
@@ -80,7 +80,7 @@ description = "Koyeb buildpack based on heroku buildpack"
 
   [[order.group]]
     id = "heroku/procfile"
-    version = "2.0.2"
+    version = "3.1.1"
     optional = true
 
   [[order.group]]
@@ -96,7 +96,7 @@ description = "Koyeb buildpack based on heroku buildpack"
 
   [[order.group]]
     id = "heroku/procfile"
-    version = "2.0.2"
+    version = "3.1.1"
     optional = true
 
   [[order.group]]
@@ -112,7 +112,7 @@ description = "Koyeb buildpack based on heroku buildpack"
 
   [[order.group]]
     id = "heroku/procfile"
-    version = "2.0.2"
+    version = "3.1.1"
     optional = true
 
   [[order.group]]
@@ -128,7 +128,7 @@ description = "Koyeb buildpack based on heroku buildpack"
 
   [[order.group]]
     id = "heroku/procfile"
-    version = "2.0.2"
+    version = "3.1.1"
     optional = true
 
   [[order.group]]
@@ -139,28 +139,28 @@ description = "Koyeb buildpack based on heroku buildpack"
 [[order]]
 
   [[order.group]]
-    id = "koyeb/custom-nodejs"
-    version = "0.1.0"
-    optional = true
-
-  [[order.group]]
     id = "heroku/nodejs"
-    version = "2.6.5"
+    version = "3.0.5"
 
   [[order.group]]
     id = "heroku/procfile"
-    version = "2.0.2"
+    version = "3.1.1"
+    optional = true
+
+  [[order.group]]
+    id = "koyeb/custom"
+    version = "0.1.0"
     optional = true
 
 [[order]]
 
   [[order.group]]
     id = "heroku/java"
-    version = "4.1.0"
+    version = "4.1.1"
 
   [[order.group]]
     id = "heroku/procfile"
-    version = "2.0.2"
+    version = "3.1.1"
     optional = true
 
   [[order.group]]
@@ -176,7 +176,7 @@ description = "Koyeb buildpack based on heroku buildpack"
 
   [[order.group]]
     id = "heroku/procfile"
-    version = "2.0.2"
+    version = "3.1.1"
     optional = true
 
   [[order.group]]
