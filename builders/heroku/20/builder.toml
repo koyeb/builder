@@ -6,7 +6,7 @@ description = "Koyeb buildpack based on heroku buildpack"
   run-image = "koyeb/pack:20-cnb"
 
 [lifecycle]
-  version = "0.15.3"
+  version = "0.17.5"
 
 [[buildpacks]]
   id = "heroku/go"

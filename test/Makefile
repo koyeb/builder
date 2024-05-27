@@ -1,6 +1,6 @@
 PACK_CMD?=pack
 BUILDER?=koyeb/builder:heroku-20
-LIFECYCLE_VERSION?=0.15.3
+LIFECYCLE_VERSION?=0.17.5
 LIFECYCLE?=buildpacksio/lifecycle:$(LIFECYCLE_VERSION)
 CNB_PLATFORM_API?=0.8
 SUBDIRS := $(wildcard */)
