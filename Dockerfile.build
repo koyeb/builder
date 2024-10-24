@@ -25,12 +25,6 @@ ENV STACK "${STACK}"
 ENV CNB_STACK_ID "${STACK}"
 LABEL io.buildpacks.stack.id="${STACK}"
 
-# Hardcode the target OS, architecture, and distro name/version for the build image.
-ENV CNB_TARGET_OS "linux"
-ENV CNB_TARGET_ARCH "amd64"
-ENV CNB_TARGET_DISTRO_NAME "ubuntu"
-ENV CNB_TARGET_DISTRO_VERSION "22.04"
-
 USER koyeb
 
 ENV HOME "/home/koyeb"

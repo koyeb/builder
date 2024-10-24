@@ -4,7 +4,8 @@ FROM ${BASE_IMAGE}
 RUN ln -s /workspace /app
 
 RUN usermod -l koyeb heroku && \
-  groupmod -n koyeb heroku
+  groupmod -n koyeb heroku && mv /home/heroku /home/koyeb
+
 
 # https://github.com/buildpacks/spec/blob/platform/0.13/platform.md#run-image
 USER koyeb
