@@ -16,7 +16,7 @@ function patch_koyeb_images() {
 function patch_lifecycle_version() {
 	echo "patching lifecycle version"
 	load=$(cat $1 | yj -t)
-	echo $load | jq '.lifecycle["version"] = "0.15.3"' | yj -jt -i >$1
+	echo $load | jq '.lifecycle["version"] = "0.20.3"' | yj -jt -i >$1
 }
 
 function patch_koyeb_custom() {
@@ -32,6 +32,6 @@ function patch_koyeb_custom() {
 	echo $load | jq '.buildpacks |= . + [{"id": "koyeb/custom", "uri": "docker://koyeb/buildpack-custom"}, {"id": "koyeb/custom-nodejs", "uri": "docker://koyeb/buildpack-custom-nodejs"}]' | jq '.order[].group |= if .[0].id == "heroku/nodejs" then [{"id": "koyeb/custom-nodejs", "version": "0.1.0", "optional": true}] + . else . + [{"id": "koyeb/custom", "version": "0.1.0", "optional": true}] end' | yj -jt -i >$1
 }
 
-#patch_lifecycle_version $1
+patch_lifecycle_version $1
 patch_koyeb_images $1
 patch_koyeb_custom $1
