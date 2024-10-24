@@ -25,7 +25,6 @@ jobs:
           path: .source/heroku
       - name: copy
         run: |
-          cp .source/heroku/buildpacks-20/builder.toml builders/heroku/20/builder.toml
           cp .source/heroku/builder-22/builder.toml builders/heroku/22/builder.toml
       - name: patch
         run: |
