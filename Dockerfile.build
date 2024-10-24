@@ -2,7 +2,7 @@ ARG BASE_IMAGE
 FROM ${BASE_IMAGE}
 
 RUN groupmod -n koyeb heroku && userdel heroku && \
-  useradd koyeb -u 1000 -g 1000 -s /bin/bash -m
+  useradd koyeb -u 1000 -g 1000 -s /bin/bash -m && rm -r /home/heroku
 
 RUN mkdir /app && \
   chown koyeb:koyeb /app
