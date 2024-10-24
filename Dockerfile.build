@@ -1,11 +1,8 @@
 ARG BASE_IMAGE
 FROM ${BASE_IMAGE}
 
-RUN mkdir /home/koyeb && \
-  rm -rf /home/heroku && \
-  usermod -l koyeb heroku && \
-  usermod -d /home/koyeb koyeb && \
-  groupmod -n koyeb heroku && chown -R koyeb:koyeb /home/koyeb
+RUN groupmod -n koyeb heroku && userdel heroku && \
+  useradd koyeb -u 1000 -g 1000 -s /bin/bash -m
 
 RUN mkdir /app && \
   chown koyeb:koyeb /app
