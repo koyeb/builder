@@ -5,7 +5,7 @@ on:
     branches:
       - main
     tags:
-      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+      - "v*" # Push events to matching v*, i.e. v1.0, v20.15.10
   pull_request:
     branches:
       - main
@@ -53,8 +53,8 @@ jobs:
       - name: Publish images
         if: ${{ startsWith(github.ref, 'refs/tags/') }}
         run: |
-          # push heroku 20 and 22
-          for version in "20" "22"; do
+          # push heroku 22
+          for version in "22"; do
             docker tag koyeb/pack:$version-cnb registry.prod.koyeb.com/koyeb/pack:$version-cnb
             docker tag koyeb/pack:$version-cnb-build registry.prod.koyeb.com/koyeb/pack:$version-cnb-build
             docker push koyeb/pack:$version-cnb
@@ -75,25 +75,22 @@ jobs:
       - name: Publish beta buildpack
         if: (github.event_name == 'push' && github.ref == 'refs/heads/main')
         run: |
-          # publish builder heroku-20 and flag as beta
-          docker tag koyeb/builder:heroku-20 koyeb/builder:beta
-          docker tag registry.prod.koyeb.com/koyeb/builder:heroku-20 registry.prod.koyeb.com/koyeb/builder:beta
-          # publish builder heroku-22
-          docker tag koyeb/builder:heroku-22 koyeb/builder:beta-22
-          docker tag registry.prod.koyeb.com/koyeb/builder:heroku-22 registry.prod.koyeb.com/koyeb/builder:beta-22
+          # publish builder heroku-22 and flag as beta
+          docker tag koyeb/builder:heroku-22 koyeb/builder:beta
+          docker tag registry.prod.koyeb.com/koyeb/builder:heroku-22 registry.prod.koyeb.com/koyeb/builder:beta
 
           docker push koyeb/builder:beta
           docker push registry.prod.koyeb.com/koyeb/builder:beta
       - name: Publish buildpack
         if: ${{ startsWith(github.ref, 'refs/tags/') }}
         run: |
-          # publish builder heroku 20 is the default
-          docker tag koyeb/builder:heroku-20 koyeb/builder:latest
-          docker tag koyeb/builder:heroku-20 koyeb/builder:heroku
-          docker tag registry.prod.koyeb.com/koyeb/builder:heroku-20 registry.prod.koyeb.com/koyeb/builder:latest
-          docker tag registry.prod.koyeb.com/koyeb/builder:heroku-20 registry.prod.koyeb.com/koyeb/builder:heroku
+          # publish builder heroku 22 is the default
+          docker tag koyeb/builder:heroku-22 koyeb/builder:latest
+          docker tag koyeb/builder:heroku-22 koyeb/builder:heroku
+          docker tag registry.prod.koyeb.com/koyeb/builder:heroku-22 registry.prod.koyeb.com/koyeb/builder:latest
+          docker tag registry.prod.koyeb.com/koyeb/builder:heroku-22 registry.prod.koyeb.com/koyeb/builder:heroku
 
-          for tag in latest heroku heroku-20 heroku-22; do
+          for tag in latest heroku heroku-22; do
             docker push koyeb/builder:$tag
             docker push registry.prod.koyeb.com/koyeb/builder:$tag
           done

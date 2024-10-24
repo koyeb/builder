@@ -10,7 +10,7 @@ function patch_koyeb_images() {
 	fi
 
 	load=$(cat $1 | yj -t)
-	echo $load | jq '.stack["build-image"] |= "koyeb/pack:" + split(":")[1]' | jq '.stack["run-image"] |= "koyeb/pack:" + split(":")[1]' | yj -jt -i >$1
+	echo $load | jq '.stack["build-image"] |= "koyeb/pack:" + split(":")[1]' | jq '.run.images[0].image |= "koyeb/pack:" + split(":")[1]' | jq '.build["image"] |= "koyeb/pack:" + split(":")[1]' | jq '.stack["run-image"] |= "koyeb/pack:" + split(":")[1]' | jq 'del(.stack["run-image-mirrors"],.run.images[0].mirrors)' | yj -jt -i >$1
 }
 
 function patch_lifecycle_version() {
@@ -32,32 +32,6 @@ function patch_koyeb_custom() {
 	echo $load | jq '.buildpacks |= . + [{"id": "koyeb/custom", "uri": "docker://koyeb/buildpack-custom"}, {"id": "koyeb/custom-nodejs", "uri": "docker://koyeb/buildpack-custom-nodejs"}]' | jq '.order[].group |= if .[0].id == "heroku/nodejs" then [{"id": "koyeb/custom-nodejs", "version": "0.1.0", "optional": true}] + . else . + [{"id": "koyeb/custom", "version": "0.1.0", "optional": true}] end' | yj -jt -i >$1
 }
 
-function patch_heroku_clojure() {
-	echo "patching add clojure"
-	out=$(grep -c 'heroku/clojure' $1)
-
-	if [[ "$out" -gt "1" ]]; then
-		echo "File '$1' already patched with clojure"
-		return
-	fi
-
-	load=$(cat $1 | yj -t)
-	echo $load | jq '.buildpacks |= . + [{"id": "heroku/clojure", "uri": "https://cnb-shim.herokuapp.com/v1/heroku/clojure?version=0.0.0&name=Clojure"}]' | jq '.order |= . + [{"group": [{"id": "heroku/clojure", "version": "0.0.0"}, {"id": "heroku/procfile", "version": "2.0.2", "optional": true}]}]' | yj -jt -i >$1
-}
-
-function patch_remove_eol() {
-	echo "patching remove eol"
-
-	load=$(cat $1 | yj -t)
-	echo $load | jq '.description = "Koyeb buildpack based on heroku buildpack"' | yj -jt -i >$1
-	load=$(cat $1 | yj -t)
-	echo $load | jq 'del(.buildpacks[] | select(.id == "heroku/builder-eol-warning"))' | yj -jt -i >$1
-	load=$(cat $1 | yj -t)
-	echo $load | jq 'del(.order[].group[] | select(.id == "heroku/builder-eol-warning"))' | yj -jt -i >$1
-}
-
-patch_lifecycle_version $1
+#patch_lifecycle_version $1
 patch_koyeb_images $1
-patch_heroku_clojure $1
 patch_koyeb_custom $1
-patch_remove_eol $1
