@@ -52,7 +52,7 @@ jobs:
         run: |
           PACK_CMD=./pack make images
       - name: Publish images
-        if: ${{ startsWith(github.ref, 'refs/tags/') }}
+        # if: ${{ startsWith(github.ref, 'refs/tags/') }}
         run: |
           # push heroku 22
           for version in "22"; do
