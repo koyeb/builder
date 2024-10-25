@@ -1,4 +1,4 @@
-api = "0.10"
+api = "0.9"
 
 [buildpack]
 id = "koyeb/custom"
