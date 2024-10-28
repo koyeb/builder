@@ -9,9 +9,10 @@ REGISTRY?=koyeb
 
 patch-builder-run-image:
 	./patch-builder.sh $(SAMPLES_ROOT)/builders/heroku/22/builder.toml ${REGISTRY}
+	./patch-builder.sh $(SAMPLES_ROOT)/builders/heroku/22-cnb/builder.toml ${REGISTRY}
 
 patch:
-	./patch.sh $(SAMPLES_ROOT)/builders/heroku/22/builder.toml
+	./patch.sh $(SAMPLES_ROOT)/builders/heroku/22-cnb/builder.toml
 
 images:
 	@docker build --pull -f Dockerfile.build --build-arg STACK=heroku-22 --build-arg BASE_IMAGE=heroku/heroku:22-build -t koyeb/pack:22-cnb-build .
@@ -22,6 +23,10 @@ build-heroku: build-heroku-22
 build-heroku-22: build-root
 	@echo "> Building 'heroku-22' builder..."
 	$(PACK_CMD) builder create ${REGISTRY}/builder:heroku-22 --config $(SAMPLES_ROOT)/builders/heroku/22/builder.toml $(PACK_FLAGS)
+
+build-heroku-22-cnb: build-root
+	@echo "> Building 'heroku-22-cnb' builder..."
+	$(PACK_CMD) builder create ${REGISTRY}/builder:heroku-22-cnb --config $(SAMPLES_ROOT)/builders/heroku/22-cnb/builder.toml $(PACK_FLAGS)
 
 clean:
 	@echo "> Removing '.tmp'"
