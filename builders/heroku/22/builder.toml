@@ -18,11 +18,11 @@ uri = "https://cnb-shim.koyeb.app/v1/heroku/gradle?version=0.0.0&name=Heroku+Gra
 
 [[buildpacks]]
 id = "heroku/java"
-uri = "docker://docker.io/heroku/buildpack-java@sha256:20b9b71a87e94e82d2e3a54e9329af49bce93d61211e4169cfe7b490972cf8d0"
+uri = "docker://docker.io/heroku/buildpack-java@sha256:d0fb1b34b7b02276cf3b265b498ee1eaf7be3bf84511c7f1b9bc231820440292"
 
 [[buildpacks]]
 id = "heroku/nodejs"
-uri = "docker://docker.io/heroku/buildpack-nodejs@sha256:366f6845bfd4595e72ebeb4b132f569e752c5d62a45376f11de37d3948ee215c"
+uri = "docker://docker.io/heroku/buildpack-nodejs@sha256:b9a06d8f617fb774f13cc9ed4ad4261ad5a65d87e8327cc714d5a607a4358372"
 
 [[buildpacks]]
 id = "heroku/php"
@@ -30,7 +30,7 @@ uri = "https://cnb-shim.koyeb.app/v1/heroku/php?version=0.0.0&name=Heroku+PHP+(S
 
 [[buildpacks]]
 id = "heroku/procfile"
-uri = "docker://docker.io/heroku/buildpack-procfile@sha256:2e57b342cab83f6517bb1b94f7ebedd2f9b723b8dc7536c15009a779ef2df92f"
+uri = "docker://docker.io/heroku/buildpack-procfile@sha256:1ef903ca2474595eb35f24e2506c5bbafe81757ea298d225c0e133f64df7b75e"
 
 [[buildpacks]]
 id = "heroku/python"
