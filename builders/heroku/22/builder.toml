@@ -80,7 +80,7 @@ version = "0.0.0"
 
 [[order.group]]
 id = "heroku/procfile"
-version = "3.1.2"
+version = "4.0.0"
 optional = true
 
 [[order.group]]
@@ -96,7 +96,7 @@ version = "0.0.0"
 
 [[order.group]]
 id = "heroku/procfile"
-version = "3.1.2"
+version = "4.0.0"
 optional = true
 
 [[order.group]]
@@ -112,7 +112,7 @@ version = "0.0.0"
 
 [[order.group]]
 id = "heroku/procfile"
-version = "3.1.2"
+version = "4.0.0"
 optional = true
 
 [[order.group]]
@@ -128,7 +128,7 @@ version = "0.0.0"
 
 [[order.group]]
 id = "heroku/procfile"
-version = "3.1.2"
+version = "4.0.0"
 optional = true
 
 [[order.group]]
@@ -149,7 +149,7 @@ version = "3.4.5"
 
 [[order.group]]
 id = "heroku/procfile"
-version = "3.1.2"
+version = "4.0.0"
 optional = true
 
 [[order]]
@@ -160,7 +160,7 @@ version = "6.0.4"
 
 [[order.group]]
 id = "heroku/procfile"
-version = "3.1.2"
+version = "4.0.0"
 optional = true
 
 [[order.group]]
@@ -176,7 +176,7 @@ version = "0.0.0"
 
 [[order.group]]
 id = "heroku/procfile"
-version = "3.1.2"
+version = "4.0.0"
 optional = true
 
 [[order.group]]
