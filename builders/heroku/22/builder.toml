@@ -18,11 +18,11 @@ uri = "https://cnb-shim.koyeb.app/v1/heroku/gradle?version=0.0.0&name=Heroku+Gra
 
 [[buildpacks]]
 id = "heroku/java"
-uri = "docker://docker.io/heroku/buildpack-java@sha256:d0fb1b34b7b02276cf3b265b498ee1eaf7be3bf84511c7f1b9bc231820440292"
+uri = "docker://docker.io/heroku/buildpack-java@sha256:cba7e01185d4a0d59c584f2fc0681db40ca2d62352f92c70d511d71c2185b4f5"
 
 [[buildpacks]]
 id = "heroku/nodejs"
-uri = "docker://docker.io/heroku/buildpack-nodejs@sha256:b9a06d8f617fb774f13cc9ed4ad4261ad5a65d87e8327cc714d5a607a4358372"
+uri = "docker://docker.io/heroku/buildpack-nodejs@sha256:57d52b406485a58c12d14d68fda2431278d93592ab2e267ba54d32893ec12499"
 
 [[buildpacks]]
 id = "heroku/php"
@@ -30,7 +30,7 @@ uri = "https://cnb-shim.koyeb.app/v1/heroku/php?version=0.0.0&name=Heroku+PHP+(S
 
 [[buildpacks]]
 id = "heroku/procfile"
-uri = "docker://docker.io/heroku/buildpack-procfile@sha256:1ef903ca2474595eb35f24e2506c5bbafe81757ea298d225c0e133f64df7b75e"
+uri = "docker://docker.io/heroku/buildpack-procfile@sha256:6ace71a217485b2932c8e4a311a502b68fde1a3c81e23576e29a9a1dba9a489a"
 
 [[buildpacks]]
 id = "heroku/python"
@@ -64,7 +64,7 @@ version = "0.0.0"
 
 [[order.group]]
 id = "heroku/procfile"
-version = "4.0.0"
+version = "4.2.1"
 optional = true
 
 [[order.group]]
@@ -80,7 +80,7 @@ version = "0.0.0"
 
 [[order.group]]
 id = "heroku/procfile"
-version = "4.0.0"
+version = "4.2.1"
 optional = true
 
 [[order.group]]
@@ -96,7 +96,7 @@ version = "0.0.0"
 
 [[order.group]]
 id = "heroku/procfile"
-version = "4.0.0"
+version = "4.2.1"
 optional = true
 
 [[order.group]]
@@ -112,7 +112,7 @@ version = "0.0.0"
 
 [[order.group]]
 id = "heroku/procfile"
-version = "4.0.0"
+version = "4.2.1"
 optional = true
 
 [[order.group]]
@@ -128,7 +128,7 @@ version = "0.0.0"
 
 [[order.group]]
 id = "heroku/procfile"
-version = "4.0.0"
+version = "4.2.1"
 optional = true
 
 [[order.group]]
@@ -145,22 +145,22 @@ optional = true
 
 [[order.group]]
 id = "heroku/nodejs"
-version = "3.4.5"
+version = "3.6.5"
 
 [[order.group]]
 id = "heroku/procfile"
-version = "4.0.0"
+version = "4.2.1"
 optional = true
 
 [[order]]
 
 [[order.group]]
 id = "heroku/java"
-version = "6.0.4"
+version = "6.2.1"
 
 [[order.group]]
 id = "heroku/procfile"
-version = "4.0.0"
+version = "4.2.1"
 optional = true
 
 [[order.group]]
@@ -176,7 +176,7 @@ version = "0.0.0"
 
 [[order.group]]
 id = "heroku/procfile"
-version = "4.0.0"
+version = "4.2.1"
 optional = true
 
 [[order.group]]
