@@ -26,7 +26,7 @@ description = "Ubuntu 22.04 AMD64 base image with buildpacks for .NET, Go, Java,
 
 [[buildpacks]]
   id = "heroku/go"
-  uri = "docker://docker.io/heroku/buildpack-go@sha256:3f30c252f9c6708763ed3f8206220ad1e29b88342e7d12e32cd96f33c880140e"
+  uri = "docker://docker.io/heroku/buildpack-go@sha256:ded434c11f08abca6ec9de51ba66ed3c99771016a876133271ffda31fd2fe8b7"
 
 [[buildpacks]]
   id = "heroku/java"
@@ -46,7 +46,7 @@ description = "Ubuntu 22.04 AMD64 base image with buildpacks for .NET, Go, Java,
 
 [[buildpacks]]
   id = "heroku/python"
-  uri = "docker://docker.io/heroku/buildpack-python@sha256:0537e2ca22eab7b155f335c31161ee512a37eaa91172c3f394e8037878a22f00"
+  uri = "docker://docker.io/heroku/buildpack-python@sha256:e40c9c5c9c7ae2a28cf3b2d24e26a95d47da40e813bcda781d2c482c8b530a66"
 
 [[buildpacks]]
   id = "heroku/ruby"
@@ -73,7 +73,7 @@ description = "Ubuntu 22.04 AMD64 base image with buildpacks for .NET, Go, Java,
 
   [[order.group]]
     id = "heroku/python"
-    version = "2.5.0"
+    version = "5.0.0"
 
   [[order.group]]
     id = "heroku/procfile"
@@ -167,7 +167,7 @@ description = "Ubuntu 22.04 AMD64 base image with buildpacks for .NET, Go, Java,
 
   [[order.group]]
     id = "heroku/go"
-    version = "2.1.2"
+    version = "2.1.10"
 
   [[order.group]]
     id = "heroku/procfile"
